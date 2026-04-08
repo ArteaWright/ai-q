@@ -1,0 +1,239 @@
+{
+    "sections": [
+        {
+            "id": "data-readiness",
+            "name": "Data Readiness",
+            "weight": 0.4,
+            "description": "How ready is the organization's data?",
+            "questions": [
+                {
+                    "id": "dr1",
+                    "text": "How organized and centralized is your current data infrastructure?",
+                    "inputFormat": "multipleChoice",
+                    "options": [
+                        "No centralized data infrastructure",
+                        "Partially organized, multiple silos",
+                        "Mostly organized, some silos remain",
+                        "Well-organized with minimal silos",
+                        "Fully centralized and optimized"
+                    ],
+                    "userInput": ""
+                },
+                {
+                    "id": "dr2",
+                    "text": "What is the quality and consistency of your data across systems?",
+                    "inputFormat": "multipleChoice",
+                    "options": [
+                        "Poor quality, highly inconsistent",
+                        "Low quality, frequent inconsistencies",
+                        "Moderate quality, some inconsistencies",
+                        "Good quality, mostly consistent",
+                        "Excellent quality, highly consistent"
+                    ],
+                    "userInput": ""
+                },
+                {
+                    "id": "dr3",
+                    "text": "Do you have adequate data governance and management policies in place?",
+                    "inputFormat": "multipleChoice",
+                    "options": [
+                        "No data governance policies",
+                        "Minimal policies, poorly enforced",
+                        "Basic policies in place",
+                        "Comprehensive policies, well-enforced",
+                        "Advanced governance with continuous improvement"
+                    ],
+                    "userInput": ""
+                }
+            ]
+        },
+        {
+            "id": "infrastructure-integration",
+            "name": "Infrastructure and Integration",
+            "weight": 0.15,
+            "description": "Can your infrastructure handle widespread integration?",
+            "questions": [
+                {
+                    "id": "ii1",
+                    "text": "How scalable is your current IT infrastructure?",
+                    "inputFormat": "multipleChoice",
+                    "options": [
+                        "Not scalable, significant limitations",
+                        "Limited scalability",
+                        "Moderate scalability",
+                        "Highly scalable",
+                        "Enterprise-grade scalability"
+                    ],
+                    "userInput": ""
+                },
+                {
+                    "id": "ii2",
+                    "text": "What level of API integration capabilities do you have?",
+                    "inputFormat": "multipleChoice",
+                    "options": [
+                        "No API integration capability",
+                        "Basic API capabilities",
+                        "Standard API capabilities",
+                        "Advanced API integration",
+                        "Fully integrated API ecosystem"
+                    ],
+                    "userInput": ""
+                },
+                {
+                    "id": "ii3",
+                    "text": "How robust is your cybersecurity and data protection infrastructure?",
+                    "inputFormat": "multipleChoice",
+                    "options": [
+                        "Minimal security measures",
+                        "Basic security in place",
+                        "Adequate security protocols",
+                        "Strong security framework",
+                        "Enterprise-level security with compliance"
+                    ],
+                    "userInput": ""
+                }
+            ]
+        },
+        {
+            "id": "human-capital",
+            "name": "Human Capital and AI Literacy",
+            "weight": 0.15,
+            "description": "How proficient and AI literate is your team?",
+            "questions": [
+                {
+                    "id": "hc1",
+                    "text": "What is your team's current understanding of AI capabilities and limitations?",
+                    "inputFormat": "multipleChoice",
+                    "options": [
+                        "Minimal understanding",
+                        "Basic awareness",
+                        "Good understanding",
+                        "Strong understanding",
+                        "Expert-level knowledge"
+                    ],
+                    "userInput": ""
+                },
+                {
+                    "id": "hc2",
+                    "text": "Do you have staff with data science or machine learning expertise?",
+                    "inputFormat": "multipleChoice",
+                    "options": [
+                        "No technical expertise",
+                        "Very limited expertise",
+                        "Some expertise available",
+                        "Good technical team",
+                        "Dedicated AI/ML team"
+                    ],
+                    "userInput": ""
+                },
+                {
+                    "id": "hc3",
+                    "text": "How receptive is your workforce to AI-driven changes and automation?",
+                    "inputFormat": "multipleChoice",
+                    "options": [
+                        "Highly resistant",
+                        "Mostly resistant",
+                        "Neutral/Mixed reactions",
+                        "Generally accepting",
+                        "Enthusiastically supportive"
+                    ],
+                    "userInput": ""
+                }
+            ]
+        },
+        {
+            "id": "leadership-readiness",
+            "name": "Leadership Readiness",
+            "weight": 0.15,
+            "description": "How AI literate is your leadership and what is their level of commitment?",
+            "questions": [
+                {
+                    "id": "lr1",
+                    "text": "How well does your leadership understand AI's strategic importance?",
+                    "inputFormat": "multipleChoice",
+                    "options": [
+                        "No strategic understanding",
+                        "Minimal strategic awareness",
+                        "Moderate understanding",
+                        "Strong strategic vision",
+                        "Clear AI strategy and buy-in"
+                    ],
+                    "userInput": ""
+                },
+                {
+                    "id": "lr2",
+                    "text": "What is the organization's financial commitment to AI initiatives?",
+                    "inputFormat": "multipleChoice",
+                    "options": [
+                        "No budget allocated",
+                        "Minimal budget",
+                        "Moderate budget",
+                        "Significant budget allocated",
+                        "Substantial ongoing investment"
+                    ],
+                    "userInput": ""
+                },
+                {
+                    "id": "lr3",
+                    "text": "How committed is leadership to supporting organizational change for AI adoption?",
+                    "inputFormat": "multipleChoice",
+                    "options": [
+                        "No commitment",
+                        "Minimal support",
+                        "Moderate support",
+                        "Strong commitment",
+                        "Fully committed with active involvement"
+                    ],
+                    "userInput": ""
+                }
+            ]
+        },
+        {
+            "id": "security-assessment",
+            "name": "Security Assessment",
+            "weight": 0.15,
+            "description": "What is your security posture for AI implementation?",
+            "questions": [
+                {
+                    "id": "sa1",
+                    "text": "How well does your organization handle data privacy and compliance?",
+                    "inputFormat": "multipleChoice",
+                    "options": [
+                        "No privacy framework",
+                        "Basic compliance measures",
+                        "Adequate privacy protocols",
+                        "Strong privacy and compliance",
+                        "Advanced privacy and regulatory compliance"
+                    ],
+                    "userInput": ""
+                },
+                {
+                    "id": "sa2",
+                    "text": "What is your incident response and disaster recovery capability?",
+                    "inputFormat": "multipleChoice",
+                    "options": [
+                        "No formal processes",
+                        "Basic processes in place",
+                        "Adequate response procedures",
+                        "Well-defined processes",
+                        "Robust with regular testing"
+                    ],
+                    "userInput": ""
+                },
+                {
+                    "id": "sa3",
+                    "text": "How do you manage AI model risks and ethical considerations?",
+                    "inputFormat": "multipleChoice",
+                    "options": [
+                        "No formal risk management",
+                        "Minimal risk assessment",
+                        "Basic risk considerations",
+                        "Formal risk management process",
+                        "Comprehensive AI ethics and governance framework"
+                    ],
+                    "userInput": ""
+                }
+            ]
+        }
+    ]
+}
