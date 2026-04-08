@@ -33,12 +33,14 @@
 
 ### Phase 2.2: Front-End UI
 5. Build the questionnaire experience:
+   - `src/app/page.tsx` serves as the authenticated welcome page with assessment preview cards and a Start button
    - `src/app/questionnaire/page.tsx` renders the assessment flow
    - Load `src/lib/questionnaire.json` and manage responses in component state
    - Support `multipleChoice` selection and optional `text` entry for future question types
 6. Create reusable UI components:
    - `src/components/QuestionCard.tsx` for question rendering and response capture
    - `src/components/ProgressBar.tsx` for progress tracking across questions/sections
+   - `src/components/QuestionnaireForm.tsx` for the questionnaire form, section navigation, and local submission preview
 7. Implement response state and navigation:
    - Track user answers by section/question
    - Allow users to move between question groups or complete the entire form
@@ -88,10 +90,11 @@
 - `src/lib/types.ts` — TypeScript interfaces ✅
 - `src/lib/scoring.ts` — Score calculation and categorization logic ✅
 - `src/lib/ai-client.ts` — AI API integration
+- `src/app/page.tsx` — Authenticated welcome page
 - `src/app/auth/login/page.tsx` — Login page
 - `src/app/auth/signup/page.tsx` — Signup page
 - `src/app/questionnaire/page.tsx` — Assessment form
-- `src/app/results/page.tsx` — Results and recommendations display
+- `src/components/QuestionnaireForm.tsx` — Questionnaire form and section navigation
 - `src/components/QuestionCard.tsx` — Question renderer
 - `src/components/ProgressBar.tsx` — Progress indicator
 - `src/components/PDFExport.tsx` — PDF generation component
@@ -155,7 +158,7 @@ Build a prompt like:
 ## Current Status
 - Phase 1: ✅ Completed (questionnaire.json, types.ts, scoring.ts created)
 - Phase 2.1: ✅ Completed (Authentication pages and route protection implemented)
-- Phase 2.2: 🔄 Next (UI components and questionnaire experience)
+- Phase 2.2: 🔄 Started (Authenticated welcome page and questionnaire UI components implemented)
 - Phase 3-6: ⏳ Pending
 
 Last updated: April 8, 2026

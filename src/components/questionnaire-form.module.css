@@ -1,0 +1,94 @@
+.container {
+    width: min(100%, 1000px);
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.header {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.sectionLabel {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.68);
+    margin: 0;
+}
+
+.heading {
+    margin: 0;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.sectionDescription {
+    margin: 0;
+    max-width: 40rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.progressGroup {
+    display: grid;
+    gap: 1rem;
+}
+
+.questions {
+    display: grid;
+    gap: 1rem;
+}
+
+.error {
+    margin-top: 1rem;
+    color: #d32f2f;
+    font-weight: 600;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.75rem;
+}
+
+.result {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.overallScore {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.sectionScores {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 1rem;
+}
+
+.sectionScore {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.note {
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.75);
+}
