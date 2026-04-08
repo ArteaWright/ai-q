@@ -154,8 +154,8 @@ Build a prompt like:
 
 ## Current Status
 - Phase 1: ✅ Completed (questionnaire.json, types.ts, scoring.ts created)
-- Phase 2.1: 🔄 Next (Authentication implementation)
-- Phase 2.2: ⏳ Pending (UI components and style guide)
+- Phase 2.1: ✅ Completed (Authentication pages and route protection implemented)
+- Phase 2.2: 🔄 Next (UI components and questionnaire experience)
 - Phase 3-6: ⏳ Pending
 
 Last updated: April 8, 2026
