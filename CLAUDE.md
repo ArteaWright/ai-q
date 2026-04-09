@@ -76,11 +76,24 @@
     - Row Level Security enabled: users can only insert and read their own rows
     - POST `/api/assessment/submit` saves assessment after Claude generates recommendations; gracefully continues if DB insert fails
 
-### Phase 6: Integration & Polish
-17. Add error handling and validation (empty responses, API failures)
-18. Add loading states and user feedback (spinners, toasts)
-19. Test complete flow: auth → fill questionnaire → submit → AI recommendations → PDF download → save to DB
-20. Styling and responsive design (dark mode already supported)
+### Phase 6: Integration & Polish ✅ COMPLETED
+17. Mobile button stacking fixed — `.actions` stacks vertically at ≤480px on questionnaire and results pages
+18. Submit route updated to upsert (one row per user; retakes overwrite via `onConflict: 'user_id'`)
+19. `GET /api/assessment/me` route — fetches the authenticated user's single assessment row from Supabase
+20. `RetakeModal` — warns user that retaking overwrites previous results; prompts PDF download before proceeding; has X / "Go back" / "Retake anyway" actions
+21. `AssessmentSidebar` — desktop sticky sidebar + mobile slide-in drawer (triggered by fixed "History" pill button):
+    - Shows overall score, readiness level, section badges (Low/Medium/High), and completed date
+    - "Download recommendation" button navigates to results page using cached Supabase data (no Claude re-call)
+    - "Retake assessment" button triggers RetakeModal
+    - Recommendations text removed from sidebar — available only via the results page PDF
+22. `HomeClient` — client wrapper on home page that wires sidebar + modal together; home page fetches assessment server-side on load and passes it down
+23. `ResultsView` updated — detects `fromHistory` flag in sessionStorage and uses `cachedRecommendations` instead of calling Claude API again
+
+### Phase 7: Design ⏳ PENDING
+- Define new color scheme and update global theme
+- Improve typography, spacing, and visual hierarchy
+- Add branding (logo/mark), gradient accents, and card depth
+- Subtle animations and transitions throughout
 
 ## Key Files to Create/Modify
 - `src/lib/questionnaire.json` — Question data ✅
@@ -97,7 +110,10 @@
 - `src/components/QuestionCard.tsx` — Question renderer ✅
 - `src/components/ProgressBar.tsx` — Progress indicator ✅
 - `src/components/ResultsView.tsx` — Results + recommendations + PDF download ✅
-- `src/app/api/assessment/history.ts` — Fetch user assessments ⏳ Phase 6
+- `src/app/api/assessment/me/route.ts` — Fetch authenticated user's assessment ✅
+- `src/components/AssessmentSidebar.tsx` — Desktop sidebar + mobile drawer with score summary and actions ✅
+- `src/components/RetakeModal.tsx` — Overwrite warning modal with PDF download prompt ✅
+- `src/components/HomeClient.tsx` — Client wrapper wiring sidebar and modal on home page ✅
 - `src/db/schema.ts` — Not needed (Supabase managed, table created via SQL Editor)
 - `src/db/client.ts` — Not needed (using existing `src/utils/supabase/` client helpers)
 
@@ -158,6 +174,7 @@ Build a prompt like:
 - Phase 3: ✅ Completed (Results page, section scores, readiness levels, Claude recommendations, PDF download)
 - Phase 4: ✅ Completed (POST /api/assessment/submit, Claude API integration with claude-opus-4-6)
 - Phase 5: ✅ Completed (assessments table created in Supabase with RLS; POST /api/assessment/submit saves overall score, readiness level, section scores, recommendations, and completed_at per user)
-- Phase 6: ⏳ Pending (Error handling polish, history page, responsive design review)
+- Phase 6: ✅ Completed (Mobile button fix, upsert on retake, assessment sidebar with drawer, RetakeModal, cached history view)
+- Phase 7: ⏳ Pending (Design — color scheme, typography, branding, animations)
 
-Last updated: April 8, 2026
+Last updated: April 9, 2026
