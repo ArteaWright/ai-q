@@ -1,9 +1,10 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import questionnaireData from '@/lib/questionnaire.json'
 import { calculateOverallScore } from '@/lib/scoring'
-import { AssessmentScore, Questionnaire, UserResponse } from '@/lib/types'
+import { Questionnaire, UserResponse } from '@/lib/types'
 import Button from '@/components/Button'
 import QuestionCard from '@/components/QuestionCard'
 import ProgressBar from '@/components/ProgressBar'
@@ -15,7 +16,8 @@ interface QuestionnaireFormProps {
     userEmail?: string
 }
 
-export default function QuestionnaireForm({ userEmail }: QuestionnaireFormProps) {
+export default function QuestionnaireForm({ userEmail: _userEmail }: QuestionnaireFormProps) {
+    const router = useRouter()
     const [currentSectionIndex, setCurrentSectionIndex] = useState(0)
     const [responses, setResponses] = useState<Record<string, number | null>>(() => {
         const initial: Record<string, number | null> = {}
@@ -27,7 +29,6 @@ export default function QuestionnaireForm({ userEmail }: QuestionnaireFormProps)
         return initial
     })
     const [error, setError] = useState('')
-    const [assessmentScore, setAssessmentScore] = useState<AssessmentScore | null>(null)
 
     const currentSection = questionnaire.sections[currentSectionIndex]
     const totalQuestions = questionnaire.sections.reduce((total, section) => total + section.questions.length, 0)
@@ -82,8 +83,9 @@ export default function QuestionnaireForm({ userEmail }: QuestionnaireFormProps)
             }))
         )
 
-        setAssessmentScore(calculateOverallScore(questionnaire.sections, userResponses))
-        setError('')
+        const scores = calculateOverallScore(questionnaire.sections, userResponses)
+        sessionStorage.setItem('pendingAssessment', JSON.stringify({ scores, responses: userResponses }))
+        router.push('/results')
     }
 
     return (
@@ -127,29 +129,6 @@ export default function QuestionnaireForm({ userEmail }: QuestionnaireFormProps)
                 </Button>
             </div>
 
-            {assessmentScore && (
-                <section className={styles.result}>
-                    <h2>Assessment preview</h2>
-                    <p>
-                        {userEmail ? `Thanks, ${userEmail}.` : 'Great work!'} This preview shows your current readiness results.
-                    </p>
-                    <div className={styles.overallScore}>
-                        <span>Overall readiness</span>
-                        <strong>{Math.round(assessmentScore.overallPercentage)}%</strong>
-                    </div>
-                    <div className={styles.sectionScores}>
-                        {assessmentScore.sectionScores.map((sectionScore) => (
-                            <div key={sectionScore.sectionId} className={styles.sectionScore}>
-                                <span>{sectionScore.sectionName}</span>
-                                <strong>{Math.round(sectionScore.percentage)}% • {sectionScore.readinessLevel}</strong>
-                            </div>
-                        ))}
-                    </div>
-                    <p className={styles.note}>
-                        This is a local preview. AI-generated recommendations and persistence will be added in the next phase.
-                    </p>
-                </section>
-            )}
         </div>
     )
 }
