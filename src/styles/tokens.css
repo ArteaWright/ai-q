@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+/* ============================================================
+   THEME TOKENS
+   All design tokens are declared here inside @theme blocks.
+   Tailwind v4 reads these to generate utility classes such as:
+     bg-amber, text-cream, border-wine, font-sans, etc.
+   ============================================================ */
+
+@theme {
+  /* ----------------------------------------------------------
+     COLOR PALETTE
+     Naming reflects the visual character of each swatch.
+  ---------------------------------------------------------- */
+
+  /* Primaries */
+  --color-amber:     #c36a3a;   /* burnt orange — secondary accent / badges */
+  --color-burgundy:  #2b0818;   /* deep dark maroon — darkest surface */
+  --color-espresso:  #19100f;   /* near-black — page background */
+
+  /* Mid-tones */
+  --color-wine:      #7e1946;   /* deep magenta — hover / active states */
+  --color-rose:      #ad4f69;   /* mauve pink — primary CTA / accent */
+  --color-copper:    #b17257;   /* terracotta — warm highlight */
+
+  /* Neutrals */
+  --color-taupe:     #9e9272;   /* warm khaki — muted text / dividers */
+  --color-sand:      #c4a389;   /* light tan — subtle borders / placeholder */
+  --color-cream:     #fffbf2;   /* off-white — primary foreground text */
+
+  /* Semantic aliases — reference the palette above */
+  --color-bg:           var(--color-espresso);
+  --color-surface:      var(--color-burgundy);
+  --color-surface-mid:  color-mix(in srgb, var(--color-burgundy) 70%, var(--color-espresso));
+  --color-border:       color-mix(in srgb, var(--color-taupe) 30%, transparent);
+  --color-border-strong: color-mix(in srgb, var(--color-taupe) 55%, transparent);
+  --color-text:         var(--color-cream);
+  --color-text-muted:   var(--color-sand);
+  --color-text-subtle:  var(--color-taupe);
+  --color-accent:       var(--color-rose);
+  --color-accent-hover: var(--color-wine);
+  --color-accent-deep:  var(--color-burgundy);
+  --color-accent-soft:  var(--color-amber);
+
+  /* Readiness level colours */
+  --color-readiness-low:    #e57373;
+  --color-readiness-medium: #ffb74d;
+  --color-readiness-high:   #81c784;
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY
+     Fonts are tokenised here so swapping is a one-line change.
+  ---------------------------------------------------------- */
+  --font-sans:  var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
+  --font-mono:  var(--font-geist-mono, ui-monospace, "Cascadia Code", monospace);
+
+  /* ----------------------------------------------------------
+     ANIMATIONS
+     Duration, easing, and named keyframes all live here.
+  ---------------------------------------------------------- */
+
+  /* Durations */
+  --duration-fast:   150ms;
+  --duration-base:   250ms;
+  --duration-slow:   400ms;
+  --duration-slower: 600ms;
+
+  /* Easings */
+  --ease-smooth:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+
+  /* Named keyframe animations (generates animate-* utilities) */
+  --animate-spin:        spin 0.8s linear infinite;
+  --animate-fade-in:     fadeIn var(--duration-base) var(--ease-out) forwards;
+  --animate-slide-up:    slideUp var(--duration-slow) var(--ease-spring) forwards;
+  --animate-slide-in:    slideIn var(--duration-slow) var(--ease-spring) forwards;
+  --animate-pulse-soft:  pulseSoft 2s var(--ease-smooth) infinite;
+  --animate-bar-fill:    barFill var(--duration-slower) var(--ease-out) forwards;
+}
+
+/* ============================================================
+   KEYFRAME DEFINITIONS
+   Referenced by --animate-* tokens above.
+   ============================================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes barFill {
+  from { width: 0%; }
+  to   { width: var(--bar-target-width, 100%); }
+}
