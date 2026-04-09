@@ -54,6 +54,16 @@
     margin-top: 1.75rem;
 }
 
+@media (max-width: 480px) {
+    .actions {
+        flex-direction: column;
+    }
+
+    .actions button {
+        width: 100%;
+    }
+}
+
 .result {
     margin-top: 2rem;
     padding: 1.5rem;

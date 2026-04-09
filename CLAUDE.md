@@ -69,10 +69,12 @@
     - `ANTHROPIC_API_KEY` configured in `.env.local`
 13. Database schema: stubbed TODO comments in submit route for Phase 5
 
-### Phase 5: Data Persistence
-14. Set up database (PostgreSQL/MongoDB/Firebase) and configure ORM/client
-15. Implement user session management (JWT or server sessions)
-16. Save assessment results and AI-generated recommendations to database after submission
+### Phase 5: Data Persistence ✅ COMPLETED
+14. Supabase PostgreSQL used — no additional ORM needed (`@supabase/supabase-js` client)
+15. Session management handled by Supabase Auth (server-side via `@supabase/ssr`)
+16. `assessments` table created in Supabase with columns: `id`, `user_id`, `overall_score`, `overall_readiness_level`, `section_scores` (jsonb), `recommendations`, `completed_at`, `created_at`
+    - Row Level Security enabled: users can only insert and read their own rows
+    - POST `/api/assessment/submit` saves assessment after Claude generates recommendations; gracefully continues if DB insert fails
 
 ### Phase 6: Integration & Polish
 17. Add error handling and validation (empty responses, API failures)
@@ -95,9 +97,9 @@
 - `src/components/QuestionCard.tsx` — Question renderer ✅
 - `src/components/ProgressBar.tsx` — Progress indicator ✅
 - `src/components/ResultsView.tsx` — Results + recommendations + PDF download ✅
-- `src/app/api/assessment/history.ts` — Fetch user assessments ⏳ Phase 5
-- `src/db/schema.ts` — Database models/schema ⏳ Phase 5
-- `src/db/client.ts` — Database connection ⏳ Phase 5
+- `src/app/api/assessment/history.ts` — Fetch user assessments ⏳ Phase 6
+- `src/db/schema.ts` — Not needed (Supabase managed, table created via SQL Editor)
+- `src/db/client.ts` — Not needed (using existing `src/utils/supabase/` client helpers)
 
 ## Score Calculation Logic
 1. For each section: sum user responses (if multiple choice, map option index to score 1-5; if text, AI API scores 1-5)
@@ -155,7 +157,7 @@ Build a prompt like:
 - Phase 2.2: ✅ Completed (Welcome page, questionnaire UI, form validation, section navigation)
 - Phase 3: ✅ Completed (Results page, section scores, readiness levels, Claude recommendations, PDF download)
 - Phase 4: ✅ Completed (POST /api/assessment/submit, Claude API integration with claude-opus-4-6)
-- Phase 5: ⏳ Pending (Persist assessments + recommendations to Supabase)
+- Phase 5: ✅ Completed (assessments table created in Supabase with RLS; POST /api/assessment/submit saves overall score, readiness level, section scores, recommendations, and completed_at per user)
 - Phase 6: ⏳ Pending (Error handling polish, history page, responsive design review)
 
 Last updated: April 8, 2026

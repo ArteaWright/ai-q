@@ -20,15 +20,18 @@ export async function POST(req: NextRequest) {
         // Generate recommendations via Claude API
         const recommendations = await generateRecommendations(scores)
 
-        // Persist to Supabase
-        const { error: dbError } = await supabase.from('assessments').insert({
-            user_id: user.id,
-            overall_score: scores.overallPercentage,
-            overall_readiness_level: scores.overallReadinessLevel,
-            section_scores: scores.sectionScores,
-            recommendations,
-            completed_at: scores.completedAt,
-        })
+        // Persist to Supabase — upsert so retakes overwrite the single row per user
+        const { error: dbError } = await supabase.from('assessments').upsert(
+            {
+                user_id: user.id,
+                overall_score: scores.overallPercentage,
+                overall_readiness_level: scores.overallReadinessLevel,
+                section_scores: scores.sectionScores,
+                recommendations,
+                completed_at: scores.completedAt,
+            },
+            { onConflict: 'user_id' }
+        )
 
         if (dbError) {
             console.error('[assessment/submit] DB insert failed:', dbError)

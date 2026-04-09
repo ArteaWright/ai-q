@@ -9,6 +9,8 @@ import styles from './results-view.module.css'
 interface StoredAssessment {
     scores: AssessmentScore
     responses: UserResponse[]
+    fromHistory?: boolean
+    cachedRecommendations?: string
 }
 
 interface Props {
@@ -39,6 +41,13 @@ export default function ResultsView({ userEmail }: Props) {
 
         const data: StoredAssessment = JSON.parse(raw)
         setAssessment(data)
+
+        // Coming from history sidebar — use cached recommendations, no API call needed
+        if (data.fromHistory && data.cachedRecommendations) {
+            setRecommendations(data.cachedRecommendations)
+            setLoading(false)
+            return
+        }
 
         if (hasFetched.current) return
         hasFetched.current = true
