@@ -17,17 +17,23 @@ export async function POST(req: NextRequest) {
         const body = await req.json() as { scores: AssessmentScore; responses: UserResponse[] }
         const { scores } = body
 
-        // Generate recommendations (placeholder — replace with Claude API in ai-client.ts)
+        // Generate recommendations via Claude API
         const recommendations = await generateRecommendations(scores)
 
-        // TODO (Phase 5): Persist to Supabase
-        // await supabase.from('assessments').insert({
-        //     user_id: user.id,
-        //     overall_score: scores.overallPercentage,
-        //     section_scores: scores.sectionScores,
-        //     recommendations,
-        //     completed_at: scores.completedAt,
-        // })
+        // Persist to Supabase
+        const { error: dbError } = await supabase.from('assessments').insert({
+            user_id: user.id,
+            overall_score: scores.overallPercentage,
+            overall_readiness_level: scores.overallReadinessLevel,
+            section_scores: scores.sectionScores,
+            recommendations,
+            completed_at: scores.completedAt,
+        })
+
+        if (dbError) {
+            console.error('[assessment/submit] DB insert failed:', dbError)
+            // Still return recommendations even if save fails
+        }
 
         return NextResponse.json({ recommendations })
     } catch (error) {

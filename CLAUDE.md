@@ -25,13 +25,13 @@
 2. Define TypeScript types: Question, Section, Assessment, AssessmentResponse, ScoreResult
 3. Create utility functions for score calculation (section totals, readiness categorization: low/medium/high)
 
-### Phase 2.1: Authentication
+### Phase 2.1: Authentication ✅ COMPLETED
 4. Create authentication pages and route protection:
    - `src/app/auth/signup/page.tsx` and `src/app/auth/login/page.tsx`
    - Use Supabase Auth helpers or client to sign up and sign in with email/password
    - Add session-aware redirect logic so unauthenticated visitors are sent to login before questionnaire access
 
-### Phase 2.2: Front-End UI
+### Phase 2.2: Front-End UI ✅ COMPLETED
 5. Build the questionnaire experience:
    - `src/app/page.tsx` serves as the authenticated welcome page with assessment preview cards and a Start button
    - `src/app/questionnaire/page.tsx` renders the assessment flow
@@ -40,39 +40,34 @@
 6. Create reusable UI components:
    - `src/components/QuestionCard.tsx` for question rendering and response capture
    - `src/components/ProgressBar.tsx` for progress tracking across questions/sections
-   - `src/components/QuestionnaireForm.tsx` for the questionnaire form, section navigation, and local submission preview
+   - `src/components/QuestionnaireForm.tsx` for the questionnaire form, section navigation, and submission
 7. Implement response state and navigation:
    - Track user answers by section/question
    - Allow users to move between question groups or complete the entire form
-   - Store draft responses in component state (and later persist with Supabase/localStorage)
 8. Add form validation and UI feedback:
    - Ensure every question has a selected response before submission
-   - Display inline errors or disabled submit button until the form is complete
-9. Create global style guide for consistent theming:
-   - Define color palette, typography, spacing, and component styles
-   - Document in `src/styles/style-guide.md` or `src/lib/styles.ts`
-   - Ensure all components follow the guide for consistency
+   - Display inline errors until the form is complete
+9. Style guide: individual CSS modules per component following shared dark-theme conventions (deferred — not blocking)
 
-### Phase 3: Frontend - Results & Export
-9. Create results page showing:
-   - Each section with score and readiness level (low/medium/high)
-   - Overall readiness percentage
-   - "Generating recommendations..." state while calling AI API
-   - Recommendations section (populated from AI API response)
-   - PDF download button
-10. Add PDF generation library (e.g., react-pdf or similar) and implement download
+### Phase 3: Frontend - Results & Export ✅ COMPLETED
+9. Results page (`src/app/results/page.tsx` + `src/components/ResultsView.tsx`):
+   - Auth-protected server wrapper + client component
+   - Scores passed via `sessionStorage` from questionnaire on submit
+   - Each section displayed with score, readiness level badge (Low/Medium/High), and progress bar
+   - Overall readiness percentage with colour-coded display
+   - "Generating recommendations…" spinner while API call is in flight
+   - Recommendations rendered from Claude API response
+   - PDF download via `jspdf` (lazy-loaded)
+10. PDF generation: `jspdf` installed, download triggered client-side from results page
 
-### Phase 4: Backend - API Routes & AI Integration
-11. Create API routes:
-    - POST `/api/auth/signup`, `/api/auth/login` — user authentication
-    - POST `/api/assessment/submit` — receive responses, calculate scores, call AI API
-    - GET `/api/assessment/history` — fetch user's past assessments
-    - GET `/api/assessment/:id` — fetch specific assessment result
-12. Implement AI API integration:
-    - Prepare context prompt with section descriptions
-    - Send assessment JSON (with user responses and scores) to AI API
-    - Parse and return recommendations
-13. Create database schema and models for: Users, Assessments, Recommendations
+### Phase 4: Backend - API Routes & AI Integration ✅ COMPLETED
+11. API routes created:
+    - POST `/api/assessment/submit` — verifies auth, calls Claude API, returns recommendations (DB insert stubbed for Phase 5)
+12. AI integration (`src/lib/ai-client.ts`):
+    - Uses `@anthropic-ai/sdk` with `claude-opus-4-6`
+    - Sends section scores + overall readiness; requests key findings, action items, 6-month roadmap, and resource recommendations
+    - `ANTHROPIC_API_KEY` configured in `.env.local`
+13. Database schema: stubbed TODO comments in submit route for Phase 5
 
 ### Phase 5: Data Persistence
 14. Set up database (PostgreSQL/MongoDB/Firebase) and configure ORM/client
@@ -89,20 +84,20 @@
 - `src/lib/questionnaire.json` — Question data ✅
 - `src/lib/types.ts` — TypeScript interfaces ✅
 - `src/lib/scoring.ts` — Score calculation and categorization logic ✅
-- `src/lib/ai-client.ts` — AI API integration
-- `src/app/page.tsx` — Authenticated welcome page
-- `src/app/auth/login/page.tsx` — Login page
-- `src/app/auth/signup/page.tsx` — Signup page
-- `src/app/questionnaire/page.tsx` — Assessment form
-- `src/components/QuestionnaireForm.tsx` — Questionnaire form and section navigation
-- `src/components/QuestionCard.tsx` — Question renderer
-- `src/components/ProgressBar.tsx` — Progress indicator
-- `src/components/PDFExport.tsx` — PDF generation component
-- `src/app/api/auth/[...auth].ts` — Auth routes (or individual route files)
-- `src/app/api/assessment/submit.ts` — Submit assessment, call AI, save to DB
-- `src/app/api/assessment/history.ts` — Fetch user assessments
-- `src/db/schema.ts` — Database models/schema
-- `src/db/client.ts` — Database connection
+- `src/lib/ai-client.ts` — Claude API integration (`@anthropic-ai/sdk`, `claude-opus-4-6`) ✅
+- `src/app/page.tsx` — Authenticated welcome page ✅
+- `src/app/auth/login/page.tsx` — Login page ✅
+- `src/app/auth/signup/page.tsx` — Signup page ✅
+- `src/app/questionnaire/page.tsx` — Assessment form ✅
+- `src/app/results/page.tsx` — Results page (auth-protected server wrapper) ✅
+- `src/app/api/assessment/submit/route.ts` — Submit endpoint, calls Claude API ✅
+- `src/components/QuestionnaireForm.tsx` — Questionnaire form and section navigation ✅
+- `src/components/QuestionCard.tsx` — Question renderer ✅
+- `src/components/ProgressBar.tsx` — Progress indicator ✅
+- `src/components/ResultsView.tsx` — Results + recommendations + PDF download ✅
+- `src/app/api/assessment/history.ts` — Fetch user assessments ⏳ Phase 5
+- `src/db/schema.ts` — Database models/schema ⏳ Phase 5
+- `src/db/client.ts` — Database connection ⏳ Phase 5
 
 ## Score Calculation Logic
 1. For each section: sum user responses (if multiple choice, map option index to score 1-5; if text, AI API scores 1-5)
@@ -147,18 +142,20 @@ Build a prompt like:
 4. **Multiple choice scoring**: 0-4 scale per question (4=10%, 3=7.5%, 2=5%, 1=2.5%, 0=0%)
 5. **PDF styling**: Minimal (plain text, section headers, scores, recommendations)
 
-## Dependencies to Add
-- `next-auth` or `@supabase/auth-helpers-nextjs` — authentication with Supabase
-- `@supabase/supabase-js` — Supabase client (PostgreSQL ORM)
-- `@anthropic-ai/sdk` — Claude API client
-- `jspdf` + `html2canvas` — PDF generation and download
-- `zod` — request validation
-- `typescript` — already installed
+## Dependencies
+- `@supabase/ssr` + `@supabase/supabase-js` — Supabase auth and client ✅
+- `@anthropic-ai/sdk` — Claude API client ✅
+- `jspdf` — PDF generation and download ✅
+- `zod` — request validation ⏳ Phase 5/6
+- `typescript` — already installed ✅
 
 ## Current Status
-- Phase 1: ✅ Completed (questionnaire.json, types.ts, scoring.ts created)
-- Phase 2.1: ✅ Completed (Authentication pages and route protection implemented)
-- Phase 2.2: 🔄 Started (Authenticated welcome page and questionnaire UI components implemented)
-- Phase 3-6: ⏳ Pending
+- Phase 1: ✅ Completed (questionnaire.json, types.ts, scoring.ts)
+- Phase 2.1: ✅ Completed (Supabase Auth login/signup + route protection)
+- Phase 2.2: ✅ Completed (Welcome page, questionnaire UI, form validation, section navigation)
+- Phase 3: ✅ Completed (Results page, section scores, readiness levels, Claude recommendations, PDF download)
+- Phase 4: ✅ Completed (POST /api/assessment/submit, Claude API integration with claude-opus-4-6)
+- Phase 5: ⏳ Pending (Persist assessments + recommendations to Supabase)
+- Phase 6: ⏳ Pending (Error handling polish, history page, responsive design review)
 
 Last updated: April 8, 2026
