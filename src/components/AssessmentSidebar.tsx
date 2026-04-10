@@ -23,9 +23,31 @@ interface Assessment {
 interface Props {
     assessment: Assessment | null
     onRetake: () => void
+    onSignOut?: () => void
+    label?: string
+    emptyState?: string
+    actions?: {
+        download?: string
+        retake?: string
+        toggle?: string
+        signOut?: string
+    }
 }
 
-export default function AssessmentSidebar({ assessment, onRetake }: Props) {
+export default function AssessmentSidebar({
+    assessment,
+    onRetake,
+    onSignOut,
+    label = 'Your assessment',
+    emptyState = 'No assessment found. Complete the questionnaire to see your results here.',
+    actions = {},
+}: Props) {
+    const {
+        download = 'Download recommendation',
+        retake = 'Retake assessment',
+        toggle = 'History',
+        signOut = 'Sign out',
+    } = actions
     const router = useRouter()
     const [drawerOpen, setDrawerOpen] = useState(false)
 
@@ -56,10 +78,10 @@ export default function AssessmentSidebar({ assessment, onRetake }: Props) {
 
     const SidebarContent = () => (
         <div className={styles.content}>
-            <p className={styles.sidebarLabel}>Your assessment</p>
+            <p className={styles.sidebarLabel}>{label}</p>
 
             {!assessment ? (
-                <p className={styles.empty}>No assessment found. Complete the questionnaire to see your results here.</p>
+                <p className={styles.empty}>{emptyState}</p>
             ) : (
                 <>
                     <div className={styles.overallRow}>
@@ -85,13 +107,21 @@ export default function AssessmentSidebar({ assessment, onRetake }: Props) {
 
                     <div className={styles.sidebarActions}>
                         <Button variant="primary" onClick={handleViewResults}>
-                            Download recommendation
+                            {download}
                         </Button>
                         <Button variant="secondary" onClick={onRetake}>
-                            Retake assessment
+                            {retake}
                         </Button>
                     </div>
                 </>
+            )}
+
+            {onSignOut && (
+                <div className={styles.signOutRow}>
+                    <Button variant="secondary" onClick={onSignOut}>
+                        {signOut}
+                    </Button>
+                </div>
             )}
         </div>
     )
@@ -99,13 +129,15 @@ export default function AssessmentSidebar({ assessment, onRetake }: Props) {
     return (
         <>
             {/* Mobile toggle button */}
-            <button
+            <Button
                 className={styles.drawerToggle}
+                variant="secondary"
+                size="small"
                 onClick={() => setDrawerOpen(true)}
                 aria-label="Open assessment history"
             >
-                History
-            </button>
+                {toggle}
+            </Button>
 
             {/* Mobile drawer */}
             {drawerOpen && (

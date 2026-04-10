@@ -1,0 +1,50 @@
+.screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 2rem;
+}
+
+/* Outer ring — slow counter-spin */
+.ring {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.06);
+    border-top-color: rgba(25, 118, 210, 0.35);
+    animation: spinSlow 3s linear infinite;
+}
+
+/* Inner ring — faster main spin */
+.innerRing {
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.04);
+    border-top-color: #1976d2;
+    animation: spinFast 1s linear infinite;
+}
+
+.text {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.04em;
+    animation: breathe 2s ease-in-out infinite;
+}
+
+@keyframes spinSlow {
+    to { transform: rotate(-360deg); }
+}
+
+@keyframes spinFast {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes breathe {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 0.9; }
+}

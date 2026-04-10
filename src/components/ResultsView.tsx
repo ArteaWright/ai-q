@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { AssessmentScore, UserResponse } from '@/lib/types'
 import Button from '@/components/Button'
+import LoadingScreen from '@/components/LoadingScreen'
 import styles from './results-view.module.css'
 
 interface StoredAssessment {
@@ -15,6 +16,11 @@ interface StoredAssessment {
 
 interface Props {
     userEmail?: string
+    label?: string
+    heading?: string
+    overallLabel?: string
+    recommendationsHeading?: string
+    loadingText?: string
 }
 
 const READINESS_LABEL: Record<string, string> = {
@@ -23,7 +29,14 @@ const READINESS_LABEL: Record<string, string> = {
     High: 'High',
 }
 
-export default function ResultsView({ userEmail }: Props) {
+export default function ResultsView({
+    userEmail,
+    label = 'Assessment complete',
+    heading = 'Your AI Readiness Results',
+    overallLabel = 'Overall readiness',
+    recommendationsHeading = 'Recommendations',
+    loadingText = 'Generating recommendations…',
+}: Props) {
     const router = useRouter()
     const [assessment, setAssessment] = useState<StoredAssessment | null>(null)
     const [recommendations, setRecommendations] = useState<string | null>(null)
@@ -117,6 +130,8 @@ export default function ResultsView({ userEmail }: Props) {
         doc.save('ai-readiness-report.pdf')
     }
 
+    if (loading) return <LoadingScreen text={loadingText} />
+
     if (error && !assessment) {
         return (
             <div className={styles.container}>
@@ -135,15 +150,15 @@ export default function ResultsView({ userEmail }: Props) {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <p className={styles.label}>Assessment complete</p>
-                <h1 className={styles.heading}>Your AI Readiness Results</h1>
+                <p className={styles.label}>{label}</p>
+                <h1 className={styles.heading}>{heading}</h1>
                 {userEmail && <p className={styles.sub}>Signed in as {userEmail}</p>}
             </div>
 
             {/* Overall score */}
             <div className={styles.overallCard}>
                 <div>
-                    <p className={styles.overallLabel}>Overall readiness</p>
+                    <p className={styles.overallLabel}>{overallLabel}</p>
                     <p className={styles.overallLevel}>{scores.overallReadinessLevel}</p>
                 </div>
                 <span className={`${styles.overallPct} ${styles[scores.overallReadinessLevel.toLowerCase()]}`}>
@@ -174,13 +189,8 @@ export default function ResultsView({ userEmail }: Props) {
 
             {/* Recommendations */}
             <div className={styles.recommendationsCard}>
-                <h2 className={styles.recHeading}>Recommendations</h2>
-                {loading ? (
-                    <div className={styles.loadingState}>
-                        <span className={styles.spinner} aria-hidden="true" />
-                        <p>Generating recommendations…</p>
-                    </div>
-                ) : error ? (
+                <h2 className={styles.recHeading}>{recommendationsHeading}</h2>
+                {error ? (
                     <p className={styles.errorMsg}>{error}</p>
                 ) : (
                     <pre className={styles.recText}>{recommendations}</pre>

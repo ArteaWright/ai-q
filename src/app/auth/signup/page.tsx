@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { createClient } from '@/utils/supabase/client';
 import Button from '@/components/Button';
 import styles from './signup.module.css';
@@ -82,7 +83,7 @@ export default function SignupPage() {
                 </Button>
             </form>
             <p className={styles.link}>
-                Already have an account? <a href="/auth/login">Login</a>
+                Already have an account? <Link href="/auth/login">Login</Link>
             </p>
         </div>
     );

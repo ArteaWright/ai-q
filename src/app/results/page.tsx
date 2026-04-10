@@ -10,5 +10,14 @@ export default async function ResultsPage() {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) redirect('/auth/login')
 
-    return <ResultsView userEmail={user.email ?? undefined} />
+    return (
+        <ResultsView
+            userEmail={user.email ?? undefined}
+            label="Assessment complete"
+            heading="Your AI Readiness Results"
+            overallLabel="Overall readiness"
+            recommendationsHeading="Recommendations"
+            loadingText="Generating recommendations…"
+        />
+    )
 }

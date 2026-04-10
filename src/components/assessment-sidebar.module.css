@@ -45,7 +45,7 @@
 
 @media (min-width: 900px) {
     .drawerToggle {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -186,4 +186,19 @@
 
 .sidebarActions button {
     width: 100%;
+}
+
+.signOutRow {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.signOutRow button {
+    width: 100%;
+    opacity: 0.7;
+}
+
+.signOutRow button:hover {
+    opacity: 1;
 }
