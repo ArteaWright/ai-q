@@ -6,13 +6,13 @@ import Link from 'next/link'
 import questionnaireData from '@/lib/questionnaire.json'
 import { calculateOverallScore } from '@/lib/scoring'
 import { Questionnaire, UserResponse } from '@/lib/types'
+import { STORAGE_KEYS } from '@/lib/storage-keys'
 import Button from '@/components/Button'
 import QuestionCard from '@/components/QuestionCard'
 import QuestionnaireProgress from '@/components/QuestionnaireProgress'
 import styles from './questionnaire-form.module.css'
 
 const questionnaire = questionnaireData as Questionnaire
-const STORAGE_KEY = 'questionnaire-progress'
 
 interface QuestionnaireFormProps {
     userEmail?: string
@@ -64,10 +64,13 @@ export default function QuestionnaireForm({
     const [error, setError] = useState('')
     const [initialized, setInitialized] = useState(false)
 
-    // Restore saved progress on mount
+    // Restore saved progress on mount. Must run before the save effect below,
+    // so `initialized` acts as a gate: the save effect is a no-op until this
+    // restore effect completes and flips `initialized` to true, preventing the
+    // initial all-null state from overwriting any localStorage data.
     useEffect(() => {
         try {
-            const saved = localStorage.getItem(STORAGE_KEY)
+            const saved = localStorage.getItem(STORAGE_KEYS.QUESTIONNAIRE_PROGRESS)
             if (saved) {
                 const { responses: savedResponses, currentSectionIndex: si, currentQuestionIndex: qi }: SavedProgress = JSON.parse(saved)
                 const hasAnswers = Object.values(savedResponses).some((v) => v !== null)
@@ -83,11 +86,11 @@ export default function QuestionnaireForm({
         setInitialized(true)
     }, [])
 
-    // Save progress after initialization so we don't overwrite restored state
+    // Save progress whenever state changes, but only after restore has run.
     useEffect(() => {
         if (!initialized) return
         const progress: SavedProgress = { responses, currentSectionIndex, currentQuestionIndex }
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(progress))
+        localStorage.setItem(STORAGE_KEYS.QUESTIONNAIRE_PROGRESS, JSON.stringify(progress))
     }, [responses, currentSectionIndex, currentQuestionIndex, initialized])
 
     const currentSection = questionnaire.sections[currentSectionIndex]
@@ -164,8 +167,8 @@ export default function QuestionnaireForm({
         )
 
         const scores = calculateOverallScore(questionnaire.sections, userResponses)
-        sessionStorage.setItem('pendingAssessment', JSON.stringify({ scores, responses: userResponses }))
-        localStorage.removeItem(STORAGE_KEY)
+        sessionStorage.setItem(STORAGE_KEYS.PENDING_ASSESSMENT, JSON.stringify({ scores, responses: userResponses }))
+        localStorage.removeItem(STORAGE_KEYS.QUESTIONNAIRE_PROGRESS)
         router.push('/results')
     }
 

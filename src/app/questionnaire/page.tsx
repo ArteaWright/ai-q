@@ -1,13 +1,9 @@
 import { redirect } from 'next/navigation'
-import { cookies } from 'next/headers'
-import { createClient } from '@/utils/supabase/server'
+import { getServerUser } from '@/lib/auth-helpers'
 import QuestionnaireForm from '@/components/QuestionnaireForm'
 
 export default async function QuestionnairePage() {
-    const cookieStore = await cookies()
-    const supabase = createClient(cookieStore)
-
-    const { data: { user } } = await supabase.auth.getUser()
+    const { user } = await getServerUser()
     if (!user) redirect('/auth/login')
 
     return (

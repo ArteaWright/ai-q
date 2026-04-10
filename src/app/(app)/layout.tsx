@@ -1,12 +1,8 @@
-import { cookies } from 'next/headers'
-import { createClient } from '@/utils/supabase/server'
+import { getServerUser } from '@/lib/auth-helpers'
 import AppShell from '@/components/AppShell'
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
-    const cookieStore = await cookies()
-    const supabase = createClient(cookieStore)
-
-    const { data: { user } } = await supabase.auth.getUser()
+    const { user, supabase } = await getServerUser()
 
     const assessment = user
         ? await supabase

@@ -1,16 +1,11 @@
 import { NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
-import { createClient } from '@/utils/supabase/server'
+import { requireAuth } from '@/lib/auth-helpers'
 
 export async function GET() {
     try {
-        const cookieStore = await cookies()
-        const supabase = createClient(cookieStore)
-
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-        }
+        const auth = await requireAuth()
+        if ('error' in auth) return auth.error
+        const { user, supabase } = auth
 
         const { data, error } = await supabase
             .from('assessments')

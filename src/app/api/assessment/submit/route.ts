@@ -1,18 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
-import { createClient } from '@/utils/supabase/server'
+import { requireAuth } from '@/lib/auth-helpers'
 import { generateRecommendations } from '@/lib/ai-client'
 import { AssessmentScore, UserResponse } from '@/lib/types'
 
 export async function POST(req: NextRequest) {
     try {
-        const cookieStore = await cookies()
-        const supabase = createClient(cookieStore)
-
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-        }
+        const auth = await requireAuth()
+        if ('error' in auth) return auth.error
+        const { user, supabase } = auth
 
         const body = await req.json() as { scores: AssessmentScore; responses: UserResponse[] }
         const { scores } = body
@@ -20,7 +15,7 @@ export async function POST(req: NextRequest) {
         // Generate recommendations via Claude API
         const recommendations = await generateRecommendations(scores)
 
-        // Persist to Supabase — upsert so retakes overwrite the single row per user
+        // Upsert so retakes overwrite the single row per user
         const { error: dbError } = await supabase.from('assessments').upsert(
             {
                 user_id: user.id,

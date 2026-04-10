@@ -1,5 +1,8 @@
 import { Question, Section, UserResponse, AssessmentScore, SectionScore } from './types';
 
+// Maps Likert scale (0–4) to point values (0–10).
+// Max 10 points per question × 3 questions = 30 points per section.
+// This scale lets weighted contributions sum cleanly to 100% overall.
 const scoreMap: Record<number, number> = {
     4: 10,
     3: 7.5,
@@ -56,6 +59,9 @@ export function calculateSectionScore(
     const maxScore = questionCount * 10;
     const percentage = maxScore > 0 ? (rawScore / maxScore) * 100 : 0;
     const readinessLevel = categorizeReadiness(percentage);
+    // Normalize the section percentage (0–100) to a 0–1 fraction, apply the
+    // section's weight (also 0–1), then scale back to a 0–100 contribution.
+    // All section contributions sum to the overall readiness percentage.
     const weightedContribution = (percentage / 100) * section.weight * 100;
 
     return {

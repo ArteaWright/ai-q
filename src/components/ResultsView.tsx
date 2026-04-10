@@ -2,17 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { AssessmentScore, UserResponse } from '@/lib/types'
+import { StoredAssessment } from '@/lib/types'
+import { STORAGE_KEYS } from '@/lib/storage-keys'
+import { formatDate, formatPercentage, readinessClass } from '@/lib/formatting'
 import Button from '@/components/Button'
 import LoadingScreen from '@/components/LoadingScreen'
 import styles from './results-view.module.css'
-
-interface StoredAssessment {
-    scores: AssessmentScore
-    responses: UserResponse[]
-    fromHistory?: boolean
-    cachedRecommendations?: string
-}
 
 interface Props {
     userEmail?: string
@@ -21,12 +16,6 @@ interface Props {
     overallLabel?: string
     recommendationsHeading?: string
     loadingText?: string
-}
-
-const READINESS_LABEL: Record<string, string> = {
-    Low: 'Low',
-    Medium: 'Medium',
-    High: 'High',
 }
 
 export default function ResultsView({
@@ -45,7 +34,7 @@ export default function ResultsView({
     const hasFetched = useRef(false)
 
     useEffect(() => {
-        const raw = sessionStorage.getItem('pendingAssessment')
+        const raw = sessionStorage.getItem(STORAGE_KEYS.PENDING_ASSESSMENT)
         if (!raw) {
             setError('No assessment found. Please complete the questionnaire first.')
             setLoading(false)
@@ -76,7 +65,7 @@ export default function ResultsView({
             })
             .then(({ recommendations }) => {
                 setRecommendations(recommendations)
-                sessionStorage.removeItem('pendingAssessment')
+                sessionStorage.removeItem(STORAGE_KEYS.PENDING_ASSESSMENT)
             })
             .catch(() => setError('Failed to generate recommendations. Please try again.'))
             .finally(() => setLoading(false))
@@ -105,20 +94,20 @@ export default function ResultsView({
         }
 
         addText('AI Readiness Assessment Report', 18, true)
-        addText(`Completed: ${new Date(assessment.scores.completedAt).toLocaleDateString()}`, 10)
+        addText(`Completed: ${formatDate(assessment.scores.completedAt)}`, 10)
         if (userEmail) addText(`User: ${userEmail}`, 10)
         y += 4
 
         addText('Overall Readiness', 14, true)
         addText(
-            `${Math.round(assessment.scores.overallPercentage)}% — ${assessment.scores.overallReadinessLevel}`,
+            `${formatPercentage(assessment.scores.overallPercentage)} — ${assessment.scores.overallReadinessLevel}`,
             12
         )
         y += 4
 
         addText('Section Scores', 14, true)
         assessment.scores.sectionScores.forEach((s) => {
-            addText(`${s.sectionName}: ${Math.round(s.percentage)}% (${s.readinessLevel})`, 11)
+            addText(`${s.sectionName}: ${formatPercentage(s.percentage)} (${s.readinessLevel})`, 11)
         })
         y += 4
 
@@ -161,8 +150,8 @@ export default function ResultsView({
                     <p className={styles.overallLabel}>{overallLabel}</p>
                     <p className={styles.overallLevel}>{scores.overallReadinessLevel}</p>
                 </div>
-                <span className={`${styles.overallPct} ${styles[scores.overallReadinessLevel.toLowerCase()]}`}>
-                    {Math.round(scores.overallPercentage)}%
+                <span className={`${styles.overallPct} ${styles[readinessClass(scores.overallReadinessLevel)]}`}>
+                    {formatPercentage(scores.overallPercentage)}
                 </span>
             </div>
 
@@ -172,17 +161,17 @@ export default function ResultsView({
                     <div key={s.sectionId} className={styles.sectionCard}>
                         <div className={styles.sectionInfo}>
                             <span className={styles.sectionName}>{s.sectionName}</span>
-                            <span className={`${styles.badge} ${styles[s.readinessLevel.toLowerCase()]}`}>
-                                {READINESS_LABEL[s.readinessLevel]}
+                            <span className={`${styles.badge} ${styles[readinessClass(s.readinessLevel)]}`}>
+                                {s.readinessLevel}
                             </span>
                         </div>
                         <div className={styles.barTrack}>
                             <div
-                                className={`${styles.barFill} ${styles[s.readinessLevel.toLowerCase()]}`}
+                                className={`${styles.barFill} ${styles[readinessClass(s.readinessLevel)]}`}
                                 style={{ width: `${s.percentage}%` }}
                             />
                         </div>
-                        <span className={styles.sectionPct}>{Math.round(s.percentage)}%</span>
+                        <span className={styles.sectionPct}>{formatPercentage(s.percentage)}</span>
                     </div>
                 ))}
             </div>

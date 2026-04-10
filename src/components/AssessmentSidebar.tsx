@@ -2,26 +2,14 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { DatabaseAssessment, StoredAssessment } from '@/lib/types'
+import { STORAGE_KEYS } from '@/lib/storage-keys'
+import { formatDate, formatPercentage, readinessClass } from '@/lib/formatting'
 import Button from '@/components/Button'
 import styles from './assessment-sidebar.module.css'
 
-interface SectionScore {
-    sectionId: string
-    sectionName: string
-    percentage: number
-    readinessLevel: 'Low' | 'Medium' | 'High'
-}
-
-interface Assessment {
-    overall_score: number
-    overall_readiness_level: string
-    section_scores: SectionScore[]
-    recommendations: string
-    completed_at: string
-}
-
 interface Props {
-    assessment: Assessment | null
+    assessment: DatabaseAssessment | null
     onRetake: () => void
     onSignOut?: () => void
     label?: string
@@ -53,7 +41,10 @@ export default function AssessmentSidebar({
 
     const handleViewResults = () => {
         if (!assessment) return
-        const payload = {
+
+        // Transform the snake_case DB row into the camelCase shape the results
+        // page expects, then flag it as a history view so no API call is made.
+        const payload: StoredAssessment = {
             scores: {
                 overallPercentage: assessment.overall_score,
                 overallReadinessLevel: assessment.overall_readiness_level,
@@ -64,17 +55,11 @@ export default function AssessmentSidebar({
             fromHistory: true,
             cachedRecommendations: assessment.recommendations,
         }
-        sessionStorage.setItem('pendingAssessment', JSON.stringify(payload))
+        sessionStorage.setItem(STORAGE_KEYS.PENDING_ASSESSMENT, JSON.stringify(payload))
         router.push('/results')
     }
 
-    const formattedDate = assessment
-        ? new Date(assessment.completed_at).toLocaleDateString(undefined, {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric',
-          })
-        : null
+    const formattedDate = assessment ? formatDate(assessment.completed_at) : null
 
     const SidebarContent = () => (
         <div className={styles.content}>
@@ -86,7 +71,7 @@ export default function AssessmentSidebar({
                 <>
                     <div className={styles.overallRow}>
                         <span className={styles.overallScore}>
-                            {Math.round(assessment.overall_score)}%
+                            {formatPercentage(assessment.overall_score)}
                         </span>
                         <div>
                             <p className={styles.overallLevel}>{assessment.overall_readiness_level} readiness</p>
@@ -98,7 +83,7 @@ export default function AssessmentSidebar({
                         {assessment.section_scores.map((s) => (
                             <div key={s.sectionId} className={styles.sectionRow}>
                                 <span className={styles.sectionName}>{s.sectionName}</span>
-                                <span className={`${styles.badge} ${styles[s.readinessLevel.toLowerCase()]}`}>
+                                <span className={`${styles.badge} ${styles[readinessClass(s.readinessLevel)]}`}>
                                     {s.readinessLevel}
                                 </span>
                             </div>

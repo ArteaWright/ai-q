@@ -3,28 +3,14 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
+import { DatabaseAssessment } from '@/lib/types'
 import AssessmentSidebar from '@/components/AssessmentSidebar'
 import Modal from '@/components/Modal'
 import Button from '@/components/Button'
 import styles from './app-shell.module.css'
 
-interface SectionScore {
-    sectionId: string
-    sectionName: string
-    percentage: number
-    readinessLevel: 'Low' | 'Medium' | 'High'
-}
-
-interface Assessment {
-    overall_score: number
-    overall_readiness_level: string
-    section_scores: SectionScore[]
-    recommendations: string
-    completed_at: string
-}
-
 interface Props {
-    assessment: Assessment | null
+    assessment: DatabaseAssessment | null
     isAuthenticated: boolean
     children: React.ReactNode
 }

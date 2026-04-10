@@ -27,6 +27,8 @@ export default function QuestionnaireProgress({ sections, currentSectionIndex, t
             name: section.name,
             at,
             // Complete when the user has moved past this section
+            // Tie completion to section navigation, not answer count, so the
+            // checkpoint and the section header update at the same moment.
             complete: currentSectionIndex > i,
         }
     })

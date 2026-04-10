@@ -1,5 +1,4 @@
-import { cookies } from 'next/headers'
-import { createClient } from '@/utils/supabase/server'
+import { getServerUser } from '@/lib/auth-helpers'
 import Link from 'next/link'
 import LandingPage from '@/components/LandingPage'
 import styles from './page.module.css'
@@ -20,9 +19,7 @@ const sections = [
 ]
 
 export default async function HomePage() {
-    const cookieStore = await cookies()
-    const supabase = createClient(cookieStore)
-    const { data: { user } } = await supabase.auth.getUser()
+    const { user, supabase } = await getServerUser()
 
     if (!user) return <LandingPage />
 
