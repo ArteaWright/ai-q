@@ -1,12 +1,9 @@
 'use client'
 
-import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
 import { DatabaseAssessment } from '@/lib/types'
 import AssessmentSidebar from '@/components/AssessmentSidebar'
-import Modal from '@/components/Modal'
-import Button from '@/components/Button'
 import styles from './app-shell.module.css'
 
 interface Props {
@@ -16,13 +13,7 @@ interface Props {
 }
 
 export default function AppShell({ assessment, isAuthenticated, children }: Props) {
-    const [showRetakeModal, setShowRetakeModal] = useState(false)
     const router = useRouter()
-
-    const handleRetake = () => {
-        setShowRetakeModal(false)
-        router.push('/questionnaire')
-    }
 
     const handleSignOut = async () => {
         const supabase = createClient()
@@ -37,37 +28,15 @@ export default function AppShell({ assessment, isAuthenticated, children }: Prop
                 {children}
             </div>
 
-            {isAuthenticated && <AssessmentSidebar
-                assessment={assessment}
-                onRetake={() => setShowRetakeModal(true)}
-                onSignOut={handleSignOut}
-                label="Your assessment"
-                emptyState="No assessment found. Complete the questionnaire to see your results here."
-                actions={{ download: 'Download recommendation', retake: 'Retake assessment', toggle: 'History' }}
-            />}
-
-            <Modal
-                isOpen={showRetakeModal}
-                onClose={() => setShowRetakeModal(false)}
-                ariaLabel="Retake assessment"
-            >
-                <h2 className={styles.modalTitle}>Before you retake</h2>
-                <p className={styles.modalBody}>
-                    Retaking the assessment will permanently overwrite your previous results and recommendations.
-                    Once you start, your previous report will no longer be available.
-                </p>
-                <p className={styles.modalHint}>
-                    If you&apos;d like to keep a copy, download your PDF report before continuing.
-                </p>
-                <div className={styles.modalActions}>
-                    <Button variant="secondary" onClick={() => setShowRetakeModal(false)}>
-                        Go back
-                    </Button>
-                    <Button variant="primary" onClick={handleRetake}>
-                        Retake anyway
-                    </Button>
-                </div>
-            </Modal>
+            {isAuthenticated && (
+                <AssessmentSidebar
+                    assessment={assessment}
+                    onSignOut={handleSignOut}
+                    label="Your assessment"
+                    emptyState="No assessment found. Complete the questionnaire to see your results here."
+                    actions={{ download: 'Download recommendation', toggle: 'History' }}
+                />
+            )}
         </div>
     )
 }

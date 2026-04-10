@@ -1,6 +1,7 @@
 import { getServerUser } from '@/lib/auth-helpers'
 import Link from 'next/link'
 import LandingPage from '@/components/LandingPage'
+import RetakeButton from '@/components/RetakeButton'
 import styles from './page.module.css'
 
 const sections = [
@@ -45,9 +46,13 @@ export default async function HomePage() {
                 ))}
             </div>
 
-            <Link href="/questionnaire" className={styles.startButton}>
-                {assessment ? 'Start new assessment' : 'Start assessment'}
-            </Link>
+            {assessment ? (
+                <RetakeButton className={styles.startButton} label="Retake assessment" />
+            ) : (
+                <Link href="/questionnaire" className={styles.startButton}>
+                    Start assessment
+                </Link>
+            )}
         </main>
     )
 }

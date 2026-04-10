@@ -1,0 +1,36 @@
+.title {
+    margin: 0;
+    font-size: 1.3rem;
+    padding-right: 2rem;
+}
+
+.body {
+    margin: 0;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.hint {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #ffb74d;
+    line-height: 1.6;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 480px) {
+    .actions {
+        flex-direction: column;
+    }
+
+    .actions button {
+        width: 100%;
+    }
+}

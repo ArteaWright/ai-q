@@ -10,13 +10,11 @@ import styles from './assessment-sidebar.module.css'
 
 interface Props {
     assessment: DatabaseAssessment | null
-    onRetake: () => void
     onSignOut?: () => void
     label?: string
     emptyState?: string
     actions?: {
         download?: string
-        retake?: string
         toggle?: string
         signOut?: string
     }
@@ -24,7 +22,6 @@ interface Props {
 
 export default function AssessmentSidebar({
     assessment,
-    onRetake,
     onSignOut,
     label = 'Your assessment',
     emptyState = 'No assessment found. Complete the questionnaire to see your results here.',
@@ -32,7 +29,6 @@ export default function AssessmentSidebar({
 }: Props) {
     const {
         download = 'Download recommendation',
-        retake = 'Retake assessment',
         toggle = 'History',
         signOut = 'Sign out',
     } = actions
@@ -93,9 +89,6 @@ export default function AssessmentSidebar({
                     <div className={styles.sidebarActions}>
                         <Button variant="primary" onClick={handleViewResults}>
                             {download}
-                        </Button>
-                        <Button variant="secondary" onClick={onRetake}>
-                            {retake}
                         </Button>
                     </div>
                 </>
