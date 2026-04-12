@@ -3,6 +3,8 @@ import Link from 'next/link'
 import LandingPage from '@/components/LandingPage'
 import Nav from '@/components/Nav'
 import RetakeButton from '@/components/RetakeButton'
+import ScrollCards from '@/components/ScrollCards'
+import { SCROLL_CARDS } from '@/lib/scroll-cards'
 import styles from './page.module.css'
 
 const sections = [
@@ -61,29 +63,10 @@ export default async function HomePage() {
                         )}
                     </div>
 
-                    {/* Right Column - Placeholder Card */}
+                    {/* Right Column - Scroll Cards */}
                     <div className={styles.rightColumn}>
-                        <div className={styles.placeholderCard}>
-                            <h2 className={styles.placeholderTitle}>Coming Soon</h2>
-                            <p className={styles.placeholderText}>
-                                Interactive story content will appear here to guide you through your AI readiness journey.
-                            </p>
-                            <div className={styles.placeholderGraphic}>
-                                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="200" height="200" fill="rgba(255, 251, 242, 0.05)" />
-                                    <circle cx="100" cy="100" r="50" fill="none" stroke="var(--color-accent)" strokeWidth="2" opacity="0.3" />
-                                    <circle cx="100" cy="100" r="35" fill="none" stroke="var(--color-accent)" strokeWidth="2" opacity="0.5" />
-                                    <circle cx="100" cy="100" r="20" fill="var(--color-accent)" opacity="0.7" />
-                                </svg>
-                            </div>
-                        </div>
+                        <ScrollCards cards={SCROLL_CARDS} />
                     </div>
-                </div>
-
-                {/* Scroll hint */}
-                <div className={styles.scrollHint}>
-                    <span className={styles.scrollLabel}>Scroll</span>
-                    <div className={styles.scrollLine} />
                 </div>
             </main>
         </>
