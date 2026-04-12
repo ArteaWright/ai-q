@@ -12,32 +12,25 @@
   }
 }
 
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .scrollContainer {
   width: 100%;
   height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  scroll-padding-top: 2rem;
+  scroll-snap-type: y mandatory;
   position: relative;
+  scrollbar-width: none;
 }
 
-/* Custom scrollbar styling */
 .scrollContainer::-webkit-scrollbar {
-  width: 6px;
-}
-
-.scrollContainer::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.scrollContainer::-webkit-scrollbar-thumb {
-  background: rgba(255, 251, 242, 0.1);
-  border-radius: 3px;
-}
-
-.scrollContainer::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 251, 242, 0.2);
+  display: none;
 }
 
 .cardsWrapper {
@@ -87,6 +80,42 @@
   color: var(--color-text-muted);
   margin: 0;
   flex-grow: 1;
+}
+
+/* Scroll Button */
+.scrollButton {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.scrollButton:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--color-text-primary);
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.scrollArrow {
+  transition: transform 0.35s ease;
+}
+
+.scrollArrowUp {
+  transform: rotate(180deg);
 }
 
 /* Scroll Hint - Sticky positioning */

@@ -12,14 +12,6 @@ const sections = [
         title: 'Data Readiness',
         text: 'Discover how well your business manages data, quality, governance, and reporting.',
     },
-    {
-        title: 'Infrastructure & Integration',
-        text: 'See whether systems, tools, and workflows are prepared for AI adoption.',
-    },
-    {
-        title: 'People, Leadership & Security',
-        text: 'Review your team readiness, leadership alignment, and security posture.',
-    },
 ]
 
 export default async function HomePage() {
@@ -62,11 +54,11 @@ export default async function HomePage() {
                             </Link>
                         )}
                     </div>
-
-                    {/* Right Column - Scroll Cards */}
                     <div className={styles.rightColumn}>
                         <ScrollCards cards={SCROLL_CARDS} />
                     </div>
+
+                    {/* Right Column - Scroll Cards */}
                 </div>
             </main>
         </>
