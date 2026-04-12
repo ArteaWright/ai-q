@@ -1,6 +1,6 @@
 'use client';
 
-import HeroCanvas from './HeroCanvas';
+import HeroCanvas from '@/components/HeroCanvas';
 import styles from './hero.module.css';
 
 interface HeroProps {
