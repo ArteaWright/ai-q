@@ -19,21 +19,21 @@ export default function ScrollCards({ cards }: ScrollCardsProps) {
         cardRefs.current[nextIndex]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, [currentIndex, cards.length]);
 
-    // Sync currentIndex when user scrolls manually
+    // Block wheel and touch scrolling — button is the only scroll trigger
     useEffect(() => {
         const container = containerRef.current;
         if (!container) return;
 
-        const onScroll = () => {
-            const scrollTop = container.scrollTop;
-            const containerHeight = container.clientHeight;
-            const index = Math.round(scrollTop / containerHeight);
-            setCurrentIndex(Math.min(index, cards.length - 1));
-        };
+        const block = (e: Event) => e.preventDefault();
 
-        container.addEventListener('scroll', onScroll, { passive: true });
-        return () => container.removeEventListener('scroll', onScroll);
-    }, [cards.length]);
+        container.addEventListener('wheel', block, { passive: false });
+        container.addEventListener('touchmove', block, { passive: false });
+
+        return () => {
+            container.removeEventListener('wheel', block);
+            container.removeEventListener('touchmove', block);
+        };
+    }, []);
 
     const isLast = currentIndex === cards.length - 1;
 

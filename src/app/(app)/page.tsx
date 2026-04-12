@@ -30,6 +30,7 @@ export default async function HomePage() {
             <Nav />
             <main className={styles.main}>
                 <div className={styles.container}>
+                    
                     {/* Left Column - Dashboard Content */}
                     <div className={styles.leftColumn}>
                         <h1 className={styles.title}>AI-Q</h1>
@@ -54,11 +55,11 @@ export default async function HomePage() {
                             </Link>
                         )}
                     </div>
+
+                    {/* Right Column - Scroll Cards */}
                     <div className={styles.rightColumn}>
                         <ScrollCards cards={SCROLL_CARDS} />
                     </div>
-
-                    {/* Right Column - Scroll Cards */}
                 </div>
             </main>
         </>

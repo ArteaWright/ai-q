@@ -24,4 +24,16 @@ export const SCROLL_CARDS: ScrollCard[] = [
     tagline: 'Card 3 Tagline',
     body: 'Card 3 body content will go here. This is a placeholder that will be updated with actual content.',
   },
+   {
+    id: 'card-4',
+    headline: 'Card 3 Headline',
+    tagline: 'Card 3 Tagline',
+    body: 'Card 3 body content will go here. This is a placeholder that will be updated with actual content.',
+  },
+   {
+    id: 'card-5',
+    headline: 'Card 3 Headline',
+    tagline: 'Card 3 Tagline',
+    body: 'Card 3 body content will go here. This is a placeholder that will be updated with actual content.',
+  },
 ];
