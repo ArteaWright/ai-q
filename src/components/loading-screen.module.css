@@ -14,7 +14,7 @@
     height: 72px;
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.06);
-    border-top-color: rgba(25, 118, 210, 0.35);
+    border-top-color: rgba(195, 106, 58, 0.35);
     animation: spinSlow 3s linear infinite;
 }
 
@@ -24,7 +24,7 @@
     inset: 6px;
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.04);
-    border-top-color: #1976d2;
+    border-top-color: var(--color-accent);
     animation: spinFast 1s linear infinite;
 }
 
@@ -37,14 +37,25 @@
 }
 
 @keyframes spinSlow {
-    to { transform: rotate(-360deg); }
+    to {
+        transform: rotate(-360deg);
+    }
 }
 
 @keyframes spinFast {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes breathe {
-    0%, 100% { opacity: 0.45; }
-    50% { opacity: 0.9; }
+
+    0%,
+    100% {
+        opacity: 0.45;
+    }
+
+    50% {
+        opacity: 0.9;
+    }
 }

@@ -2,9 +2,9 @@
     max-width: 400px;
     margin: 2rem auto;
     padding: 2rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--color-border-strong);
     border-radius: 8px;
-    background-color: #fff;
+    background-color: var(--color-surface);
 }
 
 .form {
@@ -20,13 +20,15 @@
 
 .input {
     padding: 0.5rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-border);
     border-radius: 4px;
     font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--color-text-primary);
 }
 
 .error {
-    color: #d32f2f;
+    color: var(--color-readiness-low);
     font-size: 0.875rem;
 }
 
@@ -36,7 +38,7 @@
 }
 
 .link a {
-    color: #1976d2;
+    color: var(--color-accent);
     text-decoration: none;
 }
 

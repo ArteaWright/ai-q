@@ -31,7 +31,7 @@
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 999px;
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 0.85rem;
     font-weight: 600;
     padding: 0.5rem 1rem;
@@ -62,7 +62,7 @@
 .drawer {
     width: min(85vw, 340px);
     height: 100%;
-    background: #13131f;
+    background: var(--color-dark);
     border-left: 1px solid rgba(255, 255, 255, 0.1);
     overflow-y: auto;
     padding: 2rem 1.5rem;
@@ -84,7 +84,7 @@
 }
 
 .drawerClose:hover {
-    color: #fff;
+    color: var(--color-text-primary);
     background: rgba(255, 255, 255, 0.08);
 }
 

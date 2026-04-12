@@ -33,7 +33,7 @@
 }
 
 .selected {
-    background: #1976d2;
-    border-color: #1976d2;
-    color: #fff;
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-text-primary);
 }

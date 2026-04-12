@@ -11,7 +11,7 @@
 
 .modal {
     position: relative;
-    background: #1a1a2e;
+    background: var(--color-surface);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 2rem;
@@ -35,6 +35,6 @@
 }
 
 .closeBtn:hover {
-    color: #fff;
+    color: var(--color-text-primary);
     background: rgba(255, 255, 255, 0.08);
 }

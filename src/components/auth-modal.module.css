@@ -23,8 +23,8 @@
 }
 
 .tab.active {
-    color: #fff;
-    border-bottom-color: #1976d2;
+    color: var(--color-text-primary);
+    border-bottom-color: var(--color-accent);
 }
 
 .form {
@@ -48,7 +48,7 @@
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 8px;
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 0.9375rem;
     transition: border-color 0.15s ease;
     box-sizing: border-box;
@@ -60,7 +60,7 @@
 
 .input:focus {
     outline: none;
-    border-color: #1976d2;
+    border-color: var(--color-accent);
 }
 
 .error {
@@ -82,5 +82,5 @@
 }
 
 .footer a:hover {
-    color: #fff;
+    color: var(--color-text-primary);
 }

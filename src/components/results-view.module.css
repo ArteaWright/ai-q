@@ -117,44 +117,44 @@
 
 /* Readiness colours */
 .low {
-    color: #e57373;
+    color: var(--color-readiness-low);
     background: rgba(229, 115, 115, 0.15);
 }
 
 .barFill.low {
-    background: #e57373;
+    background: var(--color-readiness-low);
 }
 
 .overallPct.low {
-    color: #e57373;
+    color: var(--color-readiness-low);
     background: transparent;
 }
 
 .medium {
-    color: #ffb74d;
+    color: var(--color-readiness-medium);
     background: rgba(255, 183, 77, 0.15);
 }
 
 .barFill.medium {
-    background: #ffb74d;
+    background: var(--color-readiness-medium);
 }
 
 .overallPct.medium {
-    color: #ffb74d;
+    color: var(--color-readiness-medium);
     background: transparent;
 }
 
 .high {
-    color: #81c784;
+    color: var(--color-readiness-high);
     background: rgba(129, 199, 132, 0.15);
 }
 
 .barFill.high {
-    background: #81c784;
+    background: var(--color-readiness-high);
 }
 
 .overallPct.high {
-    color: #81c784;
+    color: var(--color-readiness-high);
     background: transparent;
 }
 
@@ -182,7 +182,7 @@
 }
 
 .errorMsg {
-    color: #e57373;
+    color: var(--color-readiness-low);
     font-weight: 500;
 }
 

@@ -14,45 +14,62 @@
   ---------------------------------------------------------- */
 
   /* Primaries */
-  --color-amber:     #c36a3a;   /* burnt orange — secondary accent / badges */
-  --color-burgundy:  #2b0818;   /* deep dark maroon — darkest surface */
-  --color-espresso:  #19100f;   /* near-black — page background */
+  --color-dark: #19100f;
+  /* near black — primary dark background */
+  --color-surface: #2b0818;
+  /* deep plum — card / panel surface */
+  --color-accent: #c36a3a;
+  /* burnt sienna — primary interactive + logo core */
 
   /* Mid-tones */
-  --color-wine:      #7e1946;   /* deep magenta — hover / active states */
-  --color-rose:      #ad4f69;   /* mauve pink — primary CTA / accent */
-  --color-copper:    #b17257;   /* terracotta — warm highlight */
+  --color-accent-secondary: #ad4f69;
+  /* rose — hover states, secondary highlights */
+  --color-accent-deep: #7e1946;
+  /* burgundy — pressed states, active borders */
 
   /* Neutrals */
-  --color-taupe:     #9e9272;   /* warm khaki — muted text / dividers */
-  --color-sand:      #c4a389;   /* light tan — subtle borders / placeholder */
-  --color-cream:     #fffbf2;   /* off-white — primary foreground text */
+  --color-text-primary: #fffbf2;
+  /* cream — body text on dark */
+  --color-text-muted: #9e9272;
+  /* stone — secondary / hint text */
+  --color-text-warm: #c4a389;
+  /* sand — supporting labels, captions */
+  --color-bg-light: #fffbf2;
+  /* cream — light mode background */
+
+  /* Legacy palette names for compatibility (derived from new primaries) */
+  --color-espresso: var(--color-dark);
+  --color-burgundy: var(--color-surface);
+  --color-amber: var(--color-accent);
+  --color-rose: var(--color-accent-secondary);
+  --color-wine: var(--color-accent-deep);
+  --color-taupe: var(--color-text-muted);
+  --color-sand: var(--color-text-warm);
+  --color-cream: var(--color-text-primary);
+  --color-copper: #b17257;
+  /* terracotta — warm highlight (deprecated, kept for backwards compat) */
 
   /* Semantic aliases — reference the palette above */
-  --color-bg:           var(--color-espresso);
-  --color-surface:      var(--color-burgundy);
-  --color-surface-mid:  color-mix(in srgb, var(--color-burgundy) 70%, var(--color-espresso));
-  --color-border:       color-mix(in srgb, var(--color-taupe) 30%, transparent);
-  --color-border-strong: color-mix(in srgb, var(--color-taupe) 55%, transparent);
-  --color-text:         var(--color-cream);
-  --color-text-muted:   var(--color-sand);
-  --color-text-subtle:  var(--color-taupe);
-  --color-accent:       var(--color-rose);
-  --color-accent-hover: var(--color-wine);
-  --color-accent-deep:  var(--color-burgundy);
-  --color-accent-soft:  var(--color-amber);
+  --color-bg: var(--color-dark);
+  --color-surface-mid: color-mix(in srgb, var(--color-surface) 70%, var(--color-dark));
+  --color-border: color-mix(in srgb, var(--color-text-muted) 30%, transparent);
+  --color-border-strong: color-mix(in srgb, var(--color-text-muted) 55%, transparent);
+  --color-text: var(--color-text-primary);
+  --color-text-subtle: var(--color-text-muted);
+  --color-accent-hover: var(--color-accent-secondary);
+  --color-accent-soft: var(--color-accent);
 
   /* Readiness level colours */
-  --color-readiness-low:    #e57373;
+  --color-readiness-low: #e57373;
   --color-readiness-medium: #ffb74d;
-  --color-readiness-high:   #81c784;
+  --color-readiness-high: #81c784;
 
   /* ----------------------------------------------------------
      TYPOGRAPHY
      Fonts are tokenised here so swapping is a one-line change.
   ---------------------------------------------------------- */
-  --font-sans:  var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
-  --font-mono:  var(--font-geist-mono, ui-monospace, "Cascadia Code", monospace);
+  --font-sans: var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
+  --font-mono: var(--font-geist-mono, ui-monospace, "Cascadia Code", monospace);
 
   /* ----------------------------------------------------------
      ANIMATIONS
@@ -60,23 +77,23 @@
   ---------------------------------------------------------- */
 
   /* Durations */
-  --duration-fast:   150ms;
-  --duration-base:   250ms;
-  --duration-slow:   400ms;
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
   --duration-slower: 600ms;
 
   /* Easings */
-  --ease-smooth:  cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
 
   /* Named keyframe animations (generates animate-* utilities) */
-  --animate-spin:        spin 0.8s linear infinite;
-  --animate-fade-in:     fadeIn var(--duration-base) var(--ease-out) forwards;
-  --animate-slide-up:    slideUp var(--duration-slow) var(--ease-spring) forwards;
-  --animate-slide-in:    slideIn var(--duration-slow) var(--ease-spring) forwards;
-  --animate-pulse-soft:  pulseSoft 2s var(--ease-smooth) infinite;
-  --animate-bar-fill:    barFill var(--duration-slower) var(--ease-out) forwards;
+  --animate-spin: spin 0.8s linear infinite;
+  --animate-fade-in: fadeIn var(--duration-base) var(--ease-out) forwards;
+  --animate-slide-up: slideUp var(--duration-slow) var(--ease-spring) forwards;
+  --animate-slide-in: slideIn var(--duration-slow) var(--ease-spring) forwards;
+  --animate-pulse-soft: pulseSoft 2s var(--ease-smooth) infinite;
+  --animate-bar-fill: barFill var(--duration-slower) var(--ease-out) forwards;
 }
 
 /* ============================================================
@@ -85,30 +102,63 @@
    ============================================================ */
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateX(24px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes pulseSoft {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.55; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes barFill {
-  from { width: 0%; }
-  to   { width: var(--bar-target-width, 100%); }
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: var(--bar-target-width, 100%);
+  }
 }
