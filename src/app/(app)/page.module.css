@@ -1,26 +1,43 @@
 .main {
   position: relative;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1rem;
+  min-height: calc(100vh - 80px); /* Account for Nav height */
+  background: var(--color-dark);
   padding: 4rem;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans, system-ui, sans-serif);
+}
+
+.container {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.leftColumn {
+  width: 45%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex-shrink: 0;
 }
 
 .title {
+  font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
   margin: 0;
+  color: var(--color-text-primary);
 }
 
 .description {
   max-width: 40rem;
-  font-size: 1.125rem;
+  font-family: var(--font-body);
+  font-size: 15px;
   line-height: 1.8;
+  color: var(--color-text-muted);
+  margin: 0;
 }
 
 .cards {
@@ -32,40 +49,103 @@
 }
 
 .card {
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 1.25rem;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.03);
   min-height: 160px;
 }
 
 .cardTitle {
   margin: 0 0 0.75rem;
+  font-family: var(--font-display);
   font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
 }
 
 .cardText {
   margin: 0;
-  color: rgba(255, 255, 255, 0.78);
+  font-family: var(--font-body);
+  color: var(--color-text-muted);
   line-height: 1.6;
+  font-size: 14px;
 }
 
 .startButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2rem;
-  padding: 0.9rem 1.8rem;
+  margin-top: 1rem;
+  padding: 14px 28px;
   border-radius: 999px;
   background: var(--color-accent);
-  color: var(--color-text-primary);
+  color: var(--color-dark);
   text-decoration: none;
-  font-weight: 600;
-  transition: background-color 0.2s ease;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
 }
 
 .startButton:hover {
-  background: var(--color-accent-secondary);
+  background: #d4793f;
+  transform: translateY(-1px);
+}
+
+/* Right Column - Placeholder Card */
+.rightColumn {
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.placeholderCard {
+  width: 100%;
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.placeholderTitle {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.placeholderText {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.placeholderGraphic {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.placeholderGraphic svg {
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 /* Scroll hint */
@@ -107,4 +187,89 @@
   height: 32px;
   background: linear-gradient(to bottom, var(--color-accent), transparent);
   animation: pulse 1.8s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .container {
+    gap: 2rem;
+  }
+
+  .leftColumn {
+    width: 40%;
+  }
+
+  .rightColumn {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 960px) {
+  .main {
+    padding: 2rem;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  .leftColumn {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  }
+
+  .rightColumn {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: 1.5rem;
+  }
+
+  .container {
+    gap: 1.5rem;
+  }
+
+  .leftColumn {
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .startButton {
+    width: 100%;
+    text-align: center;
+    padding: 12px 24px;
+  }
+
+  .placeholderCard {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .placeholderTitle {
+    font-size: 1.2rem;
+  }
+
+  .placeholderText {
+    font-size: 13px;
+  }
 }
