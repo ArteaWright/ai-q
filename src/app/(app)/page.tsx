@@ -53,6 +53,12 @@ export default async function HomePage() {
                     Start assessment
                 </Link>
             )}
+
+            {/* Scroll hint */}
+            <div className={styles.scrollHint}>
+                <span className={styles.scrollLabel}>Scroll</span>
+                <div className={styles.scrollLine} />
+            </div>
         </main>
     )
 }

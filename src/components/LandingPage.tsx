@@ -1,31 +1,29 @@
 'use client'
 
 import { useState } from 'react'
+import Nav from '@/components/Nav'
+import Hero from '@/components/Hero'
 import AuthModal from '@/components/AuthModal'
-import Button from '@/components/Button'
-import styles from './landing-page.module.css'
 
 export default function LandingPage() {
     const [showAuth, setShowAuth] = useState(false)
 
     return (
-        <main className={styles.main}>
-            {/* Phase 7.2: Replace this section with <HeroSection /> — 3D render + headline */}
-            <div className={styles.hero}>
-                <h1 className={styles.title}>AI-Q</h1>
-                <p className={styles.description}>
-                    Evaluate your business AI readiness across data, infrastructure, people, leadership, and security.
-                </p>
-                <Button variant="primary" size="large" onClick={() => setShowAuth(true)}>
-                    Get started
-                </Button>
-            </div>
-
+        <>
+            <Nav />
+            <Hero
+                onStartClick={() => setShowAuth(true)}
+                onSeeHowClick={() => {
+                    // For now, just log. Can be updated to scroll to section or navigate
+                    console.log('See how it works clicked')
+                }}
+            />
             <AuthModal
                 isOpen={showAuth}
                 onClose={() => setShowAuth(false)}
                 defaultTab="signup"
             />
-        </main>
+        </>
     )
 }
+
