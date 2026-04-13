@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState, useCallback, useEffect } from 'react';
-import { ScrollCard } from '@/lib/scroll-cards';
+import { ScrollCard } from './data';
 import styles from './scroll-cards.module.css';
 
 interface ScrollCardsProps {

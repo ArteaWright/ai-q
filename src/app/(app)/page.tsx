@@ -1,10 +1,10 @@
-import { getServerUser } from '@/lib/auth-helpers'
+import { getServerUser } from '@/utils/auth/helpers'
 import Link from 'next/link'
 import LandingPage from '@/components/LandingPage'
 import Nav from '@/components/Nav'
 import RetakeButton from '@/components/RetakeButton'
 import ScrollCards from '@/components/ScrollCards'
-import { SCROLL_CARDS } from '@/lib/scroll-cards'
+import { SCROLL_CARDS } from '@/components/ScrollCards/data'
 import styles from './page.module.css'
 
 const sections = [

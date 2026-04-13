@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
-import { getServerUser } from '@/lib/auth-helpers'
+import { getServerUser } from '@/utils/auth/helpers'
 import ResultsView from '@/components/ResultsView'
 
 export default async function ResultsPage() {

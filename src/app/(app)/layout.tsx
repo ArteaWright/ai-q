@@ -1,4 +1,4 @@
-import { getServerUser } from '@/lib/auth-helpers'
+import { getServerUser } from '@/utils/auth/helpers'
 import AppShell from '@/components/AppShell'
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {

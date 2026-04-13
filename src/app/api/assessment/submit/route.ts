@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { requireAuth } from '@/lib/auth-helpers'
+import { requireAuth } from '@/utils/auth/helpers'
 import { generateRecommendations } from '@/lib/ai-client'
 import { AssessmentScore, UserResponse } from '@/lib/types'
 

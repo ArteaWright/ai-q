@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
-import { getServerUser } from '@/lib/auth-helpers'
+import { getServerUser } from '@/utils/auth/helpers'
 import QuestionnaireForm from '@/components/QuestionnaireForm'
 
 export default async function QuestionnairePage() {

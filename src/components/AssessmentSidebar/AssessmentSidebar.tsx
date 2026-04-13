@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { DatabaseAssessment, StoredAssessment } from '@/lib/types'
 import { STORAGE_KEYS } from '@/lib/storage-keys'
-import { formatDate, formatPercentage, readinessClass } from '@/lib/formatting'
+import { formatDate, formatPercentage, readinessClass } from '@/utils/formatting'
 import Button from '@/components/Button'
 import styles from './assessment-sidebar.module.css'
 

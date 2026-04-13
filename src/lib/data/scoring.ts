@@ -1,4 +1,4 @@
-import { Question, Section, UserResponse, AssessmentScore, SectionScore } from './types';
+import { Question, Section, UserResponse, AssessmentScore, SectionScore } from '../types';
 
 // Maps Likert scale (0–4) to point values (0–10).
 // Max 10 points per question × 3 questions = 30 points per section.
