@@ -55,12 +55,21 @@ export default function Card({
         if (!scrollable) return
         const container = containerRef.current
         if (!container) return
-        const block = (e: Event) => e.preventDefault()
-        container.addEventListener('wheel', block, { passive: false })
-        container.addEventListener('touchmove', block, { passive: false })
+
+        const blockWheel = (e: Event) => e.preventDefault()
+        container.addEventListener('wheel', blockWheel, { passive: false })
+
+        // On mobile, allow native touch scroll — button handles navigation instead
+        const isMobile = window.matchMedia('(max-width: 960px)').matches
+        let blockTouch: ((e: Event) => void) | null = null
+        if (!isMobile) {
+            blockTouch = (e: Event) => e.preventDefault()
+            container.addEventListener('touchmove', blockTouch, { passive: false })
+        }
+
         return () => {
-            container.removeEventListener('wheel', block)
-            container.removeEventListener('touchmove', block)
+            container.removeEventListener('wheel', blockWheel)
+            if (blockTouch) container.removeEventListener('touchmove', blockTouch)
         }
     }, [scrollable])
 
