@@ -1,18 +1,8 @@
 import { getServerUser } from '@/utils/auth/helpers'
-import Link from 'next/link'
 import LandingPage from '@/components/LandingPage'
 import Nav from '@/components/Nav'
-import RetakeButton from '@/components/RetakeButton'
-import ScrollCards from '@/components/ScrollCards'
-import { SCROLL_CARDS } from '@/components/ScrollCards/data'
-import styles from './page.module.css'
-
-const sections = [
-    {
-        title: 'Data Readiness',
-        text: 'Discover how well your business manages data, quality, governance, and reporting.',
-    },
-]
+import HomeClient from './HomeClient'
+import { DatabaseAssessment } from '@/lib/types'
 
 export default async function HomePage() {
     const { user, supabase } = await getServerUser()
@@ -21,47 +11,14 @@ export default async function HomePage() {
 
     const { data: assessment } = await supabase
         .from('assessments')
-        .select('id')
+        .select('overall_score, overall_readiness_level, section_scores, completed_at, recommendations')
         .eq('user_id', user.id)
         .single()
 
     return (
         <>
             <Nav />
-            <main className={styles.main}>
-                <div className={styles.container}>
-                    
-                    {/* Left Column - Dashboard Content */}
-                    <div className={styles.leftColumn}>
-                        <h1 className={styles.title}>AI-Q</h1>
-                        <p className={styles.description}>
-                            Evaluate your AI readiness with AI-Q, the AI readiness assessment tool.
-                        </p>
-
-                        <div className={styles.cards}>
-                            {sections.map((section) => (
-                                <div key={section.title} className={styles.card}>
-                                    <h2 className={styles.cardTitle}>{section.title}</h2>
-                                    <p className={styles.cardText}>{section.text}</p>
-                                </div>
-                            ))}
-                        </div>
-
-                        {assessment ? (
-                            <RetakeButton className={styles.startButton} label="Retake assessment" />
-                        ) : (
-                            <Link href="/questionnaire" className={styles.startButton}>
-                                Start assessment
-                            </Link>
-                        )}
-                    </div>
-
-                    {/* Right Column - Scroll Cards */}
-                    <div className={styles.rightColumn}>
-                        <ScrollCards cards={SCROLL_CARDS} />
-                    </div>
-                </div>
-            </main>
+            <HomeClient assessment={(assessment as DatabaseAssessment) ?? null} />
         </>
     )
 }

@@ -1,0 +1,309 @@
+/* ── Layout ── */
+.main {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+}
+
+.container {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1.5rem;
+}
+
+/* ── Column sizing ── */
+.leftCard,
+.middleCard,
+.rightCard {
+    min-height: 0;
+    height: 100%;
+}
+
+/* ── Left card content ── */
+.leftContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 2rem;
+}
+
+.leftTop {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 800;
+    margin: 0;
+    color: var(--color-text-primary);
+    letter-spacing: -1px;
+}
+
+.description {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    margin: 0;
+    max-width: 32rem;
+}
+
+.sectionCard {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    margin-top: 0.5rem;
+}
+
+.sectionTitle {
+    margin: 0 0 0.5rem;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.sectionText {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+}
+
+.leftActions {
+    margin-top: 2rem;
+}
+
+.actionButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 28px;
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: var(--color-dark);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14px;
+    transition: background 0.2s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.actionButton:hover {
+    background: #d4793f;
+    transform: translateY(-1px);
+}
+
+/* ── Right card content ── */
+.rightContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+    padding: 2rem;
+}
+
+.panelLabel {
+    margin: 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.emptyState {
+    margin: 0;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+}
+
+.scoreRow {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.score {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-text-primary);
+    flex-shrink: 0;
+}
+
+.level {
+    margin: 0 0 0.2rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+}
+
+.date {
+    margin: 0;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Readiness level colours */
+.low { color: var(--color-readiness-low); }
+.medium { color: var(--color-readiness-medium); }
+.high { color: var(--color-readiness-high); }
+
+/* ── Section list ── */
+.sections {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.sectionRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+}
+
+.sectionName {
+    color: rgba(255, 255, 255, 0.75);
+    font-family: var(--font-body);
+}
+
+.badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    flex-shrink: 0;
+}
+
+.badge.low {
+    color: var(--color-readiness-low);
+    background: rgba(229, 115, 115, 0.15);
+}
+
+.badge.medium {
+    color: var(--color-readiness-medium);
+    background: rgba(255, 183, 77, 0.15);
+}
+
+.badge.high {
+    color: var(--color-readiness-high);
+    background: rgba(129, 199, 132, 0.15);
+}
+
+/* ── Sign out ── */
+.signOutRow {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.signOutRow button {
+    width: 100%;
+    opacity: 0.65;
+}
+
+.signOutRow button:hover {
+    opacity: 1;
+}
+
+/* ── Retake modal ── */
+.modalTitle {
+    margin: 0;
+    font-size: 1.3rem;
+    padding-right: 2rem;
+}
+
+.modalBody {
+    margin: 0;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.modalHint {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-readiness-medium);
+    line-height: 1.6;
+}
+
+.modalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+/* ── Mobile ── */
+@media (max-width: 960px) {
+    .main {
+        padding: 1rem;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    /* Right card (results) floats to top when assessment is present */
+    .mobileFirst {
+        order: -1;
+    }
+
+    .leftContent,
+    .rightContent {
+        padding: 1.5rem;
+    }
+
+    .leftActions {
+        margin-top: 1.25rem;
+    }
+
+    .score {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .leftContent,
+    .rightContent {
+        padding: 1.25rem;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .modalActions {
+        flex-direction: column;
+    }
+
+    .modalActions button {
+        width: 100%;
+    }
+}
