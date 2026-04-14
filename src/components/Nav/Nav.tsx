@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import styles from './nav.module.css';
 
-export default function Nav() {
+interface NavProps {
+  hasAssessment?: boolean
+  onCtaClick?: () => void
+}
+
+export default function Nav({ hasAssessment = false, onCtaClick }: NavProps = {}) {
   return (
     <nav className={styles.nav}>
         {/* Left: Logo and Wordmark */}
@@ -59,7 +64,9 @@ export default function Nav() {
             <a href="#about">About</a>
           </li>
         </ul>
-        <button className={styles.ctaButton}>Start assessment</button>
+        <button className={styles.ctaButton} onClick={onCtaClick}>
+          {hasAssessment ? 'Retake assessment' : 'Start assessment'}
+        </button>
       </div>
     </nav>
   );

@@ -11,6 +11,7 @@ import { STORAGE_KEYS } from '@/lib/storage-keys'
 import Card from '@/components/Card'
 import Modal from '@/components/Modal'
 import Button from '@/components/Button'
+import Nav from '@/components/Nav'
 import styles from './home-client.module.css'
 
 interface Props {
@@ -50,8 +51,17 @@ export default function HomeClient({ assessment }: Props) {
         router.push('/questionnaire')
     }
 
+    const handleCtaClick = () => {
+        if (assessment) {
+            setShowRetakeModal(true)
+        } else {
+            router.push('/questionnaire')
+        }
+    }
+
     return (
         <>
+            <Nav hasAssessment={!!assessment} onCtaClick={handleCtaClick} />
             <main className={styles.main}>
                 <div className={styles.container}>
 

@@ -1,6 +1,5 @@
 import { getServerUser } from '@/utils/auth/helpers'
 import LandingPage from '@/components/LandingPage'
-import Nav from '@/components/Nav'
 import HomeClient from './HomeClient'
 import { DatabaseAssessment } from '@/lib/types'
 
@@ -16,9 +15,6 @@ export default async function HomePage() {
         .single()
 
     return (
-        <>
-            <Nav />
-            <HomeClient assessment={(assessment as DatabaseAssessment) ?? null} />
-        </>
+        <HomeClient assessment={(assessment as DatabaseAssessment) ?? null} />
     )
 }

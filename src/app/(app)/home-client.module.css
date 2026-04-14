@@ -262,12 +262,23 @@
 @media (max-width: 960px) {
     .main {
         padding: 1rem;
+        overflow: visible;
     }
 
     .container {
         display: flex;
         flex-direction: column;
         gap: 1rem;
+    }
+
+    .leftCard,
+    .rightCard {
+        height: auto;
+    }
+
+    .middleCard {
+        height: 60vh;
+        flex-shrink: 0;
     }
 
     /* Right card (results) floats to top when assessment is present */
