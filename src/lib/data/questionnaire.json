@@ -1,239 +1,807 @@
 {
-    "sections": [
-        {
-            "id": "data-readiness",
-            "name": "Data Readiness",
-            "weight": 0.4,
-            "description": "How ready is the organization's data?",
-            "questions": [
-                {
-                    "id": "dr1",
-                    "text": "How organized and centralized is your current data infrastructure?",
-                    "inputFormat": "multipleChoice",
-                    "options": [
-                        "No centralized data infrastructure",
-                        "Partially organized, multiple silos",
-                        "Mostly organized, some silos remain",
-                        "Well-organized with minimal silos",
-                        "Fully centralized and optimized"
-                    ],
-                    "userInput": ""
-                },
-                {
-                    "id": "dr2",
-                    "text": "What is the quality and consistency of your data across systems?",
-                    "inputFormat": "multipleChoice",
-                    "options": [
-                        "Poor quality, highly inconsistent",
-                        "Low quality, frequent inconsistencies",
-                        "Moderate quality, some inconsistencies",
-                        "Good quality, mostly consistent",
-                        "Excellent quality, highly consistent"
-                    ],
-                    "userInput": ""
-                },
-                {
-                    "id": "dr3",
-                    "text": "Do you have adequate data governance and management policies in place?",
-                    "inputFormat": "multipleChoice",
-                    "options": [
-                        "No data governance policies",
-                        "Minimal policies, poorly enforced",
-                        "Basic policies in place",
-                        "Comprehensive policies, well-enforced",
-                        "Advanced governance with continuous improvement"
-                    ],
-                    "userInput": ""
-                }
-            ]
-        },
-        {
-            "id": "infrastructure-integration",
-            "name": "Infrastructure and Integration",
-            "weight": 0.15,
-            "description": "Can your infrastructure handle widespread integration?",
-            "questions": [
-                {
-                    "id": "ii1",
-                    "text": "How scalable is your current IT infrastructure?",
-                    "inputFormat": "multipleChoice",
-                    "options": [
-                        "Not scalable, significant limitations",
-                        "Limited scalability",
-                        "Moderate scalability",
-                        "Highly scalable",
-                        "Enterprise-grade scalability"
-                    ],
-                    "userInput": ""
-                },
-                {
-                    "id": "ii2",
-                    "text": "What level of API integration capabilities do you have?",
-                    "inputFormat": "multipleChoice",
-                    "options": [
-                        "No API integration capability",
-                        "Basic API capabilities",
-                        "Standard API capabilities",
-                        "Advanced API integration",
-                        "Fully integrated API ecosystem"
-                    ],
-                    "userInput": ""
-                },
-                {
-                    "id": "ii3",
-                    "text": "How robust is your cybersecurity and data protection infrastructure?",
-                    "inputFormat": "multipleChoice",
-                    "options": [
-                        "Minimal security measures",
-                        "Basic security in place",
-                        "Adequate security protocols",
-                        "Strong security framework",
-                        "Enterprise-level security with compliance"
-                    ],
-                    "userInput": ""
-                }
-            ]
-        },
-        {
-            "id": "human-capital",
-            "name": "Human Capital and AI Literacy",
-            "weight": 0.15,
-            "description": "How proficient and AI literate is your team?",
-            "questions": [
-                {
-                    "id": "hc1",
-                    "text": "What is your team's current understanding of AI capabilities and limitations?",
-                    "inputFormat": "multipleChoice",
-                    "options": [
-                        "Minimal understanding",
-                        "Basic awareness",
-                        "Good understanding",
-                        "Strong understanding",
-                        "Expert-level knowledge"
-                    ],
-                    "userInput": ""
-                },
-                {
-                    "id": "hc2",
-                    "text": "Do you have staff with data science or machine learning expertise?",
-                    "inputFormat": "multipleChoice",
-                    "options": [
-                        "No technical expertise",
-                        "Very limited expertise",
-                        "Some expertise available",
-                        "Good technical team",
-                        "Dedicated AI/ML team"
-                    ],
-                    "userInput": ""
-                },
-                {
-                    "id": "hc3",
-                    "text": "How receptive is your workforce to AI-driven changes and automation?",
-                    "inputFormat": "multipleChoice",
-                    "options": [
-                        "Highly resistant",
-                        "Mostly resistant",
-                        "Neutral/Mixed reactions",
-                        "Generally accepting",
-                        "Enthusiastically supportive"
-                    ],
-                    "userInput": ""
-                }
-            ]
-        },
-        {
-            "id": "leadership-readiness",
-            "name": "Leadership Readiness",
-            "weight": 0.15,
-            "description": "How AI literate is your leadership and what is their level of commitment?",
-            "questions": [
-                {
-                    "id": "lr1",
-                    "text": "How well does your leadership understand AI's strategic importance?",
-                    "inputFormat": "multipleChoice",
-                    "options": [
-                        "No strategic understanding",
-                        "Minimal strategic awareness",
-                        "Moderate understanding",
-                        "Strong strategic vision",
-                        "Clear AI strategy and buy-in"
-                    ],
-                    "userInput": ""
-                },
-                {
-                    "id": "lr2",
-                    "text": "What is the organization's financial commitment to AI initiatives?",
-                    "inputFormat": "multipleChoice",
-                    "options": [
-                        "No budget allocated",
-                        "Minimal budget",
-                        "Moderate budget",
-                        "Significant budget allocated",
-                        "Substantial ongoing investment"
-                    ],
-                    "userInput": ""
-                },
-                {
-                    "id": "lr3",
-                    "text": "How committed is leadership to supporting organizational change for AI adoption?",
-                    "inputFormat": "multipleChoice",
-                    "options": [
-                        "No commitment",
-                        "Minimal support",
-                        "Moderate support",
-                        "Strong commitment",
-                        "Fully committed with active involvement"
-                    ],
-                    "userInput": ""
-                }
-            ]
-        },
-        {
-            "id": "security-assessment",
-            "name": "Security Assessment",
-            "weight": 0.15,
-            "description": "What is your security posture for AI implementation?",
-            "questions": [
-                {
-                    "id": "sa1",
-                    "text": "How well does your organization handle data privacy and compliance?",
-                    "inputFormat": "multipleChoice",
-                    "options": [
-                        "No privacy framework",
-                        "Basic compliance measures",
-                        "Adequate privacy protocols",
-                        "Strong privacy and compliance",
-                        "Advanced privacy and regulatory compliance"
-                    ],
-                    "userInput": ""
-                },
-                {
-                    "id": "sa2",
-                    "text": "What is your incident response and disaster recovery capability?",
-                    "inputFormat": "multipleChoice",
-                    "options": [
-                        "No formal processes",
-                        "Basic processes in place",
-                        "Adequate response procedures",
-                        "Well-defined processes",
-                        "Robust with regular testing"
-                    ],
-                    "userInput": ""
-                },
-                {
-                    "id": "sa3",
-                    "text": "How do you manage AI model risks and ethical considerations?",
-                    "inputFormat": "multipleChoice",
-                    "options": [
-                        "No formal risk management",
-                        "Minimal risk assessment",
-                        "Basic risk considerations",
-                        "Formal risk management process",
-                        "Comprehensive AI ethics and governance framework"
-                    ],
-                    "userInput": ""
-                }
-            ]
+  "classifier": {
+    "id": "environment-classifier",
+    "name": "Environment Classifier",
+    "description": "Routes the assessment to the correct question track. Not scored.",
+    "questions": [
+      {
+        "id": "cl1",
+        "text": "Where would AI primarily operate in your organization?",
+        "inputFormat": "multipleChoice",
+        "options": [
+          "Inside software, digital tools, or knowledge workflows",
+          "Inside physical equipment, machines, or robotic systems",
+          "Inside scientific research, modeling, or discovery processes",
+          "Across real-time operational systems like logistics, infrastructure, or facilities"
+        ],
+        "userInput": "",
+        "tracksTo": {
+          "0": "workflow",
+          "1": "embedded",
+          "2": "scientific",
+          "3": "operational"
         }
+      },
+      {
+        "id": "cl2",
+        "text": "If AI made a wrong decision in your environment, what is the most likely consequence?",
+        "inputFormat": "multipleChoice",
+        "options": [
+          "A bad recommendation a human can review and correct",
+          "A flawed research result or model prediction",
+          "A disrupted process, system outage, or missed SLA",
+          "A physical event — equipment damage, safety incident, or regulatory violation"
+        ],
+        "userInput": "",
+        "tracksTo": {
+          "0": "workflow",
+          "1": "scientific",
+          "2": "operational",
+          "3": "embedded"
+        }
+      }
     ]
+  },
+  "sections": [
+    {
+      "id": "data-readiness",
+      "name": "Data Readiness",
+      "weight": 0.4,
+      "description": "How ready is the organization's data?",
+      "questions": [
+        {
+          "id": "dr1",
+          "text": "How organized and accessible is your current data?",
+          "inputFormat": "multipleChoice",
+          "tracks": {
+            "workflow": {
+              "text": "How organized and centralized is your current business data across tools and systems?",
+              "options": [
+                "No centralized data — everything lives in emails and memory",
+                "Partially organized across multiple disconnected tools",
+                "Mostly organized with some silos remaining",
+                "Well-organized with minimal silos and good accessibility",
+                "Fully centralized, documented, and consistently maintained"
+              ]
+            },
+            "scientific": {
+              "text": "How is your experimental or research data currently managed and stored?",
+              "options": [
+                "Lab notebooks and informal records only",
+                "Spreadsheets with inconsistent structure",
+                "Structured databases with some gaps in documentation",
+                "Versioned, structured datasets with metadata",
+                "Fully governed data pipelines with reproducibility standards"
+              ]
+            },
+            "operational": {
+              "text": "How consistently does your operational environment generate and store event or sensor data?",
+              "options": [
+                "No systematic data collection from operations",
+                "Sporadic data collection, mostly manual",
+                "Continuous collection but unstructured and hard to query",
+                "Continuous, structured, and queryable in near real-time",
+                "Fully instrumented with automated pipelines and historical depth"
+              ]
+            },
+            "embedded": {
+              "text": "What is the quality and consistency of sensor and telemetry data from your physical systems?",
+              "options": [
+                "No sensor data collected or logged",
+                "Sensor data collected but unreliable and inconsistent",
+                "Generally reliable data with known gaps",
+                "Clean, timestamped data from most systems",
+                "High-fidelity, labeled, timestamped data across all systems with redundancy"
+              ]
+            }
+          },
+          "userInput": ""
+        },
+        {
+          "id": "dr2",
+          "text": "What is the quality and consistency of your data?",
+          "inputFormat": "multipleChoice",
+          "tracks": {
+            "workflow": {
+              "text": "What is the quality and consistency of your business data across systems?",
+              "options": [
+                "Poor quality — duplicates, missing fields, and no standards",
+                "Low quality with frequent inconsistencies across tools",
+                "Moderate quality with known issues being addressed",
+                "Good quality, mostly consistent with occasional gaps",
+                "Excellent quality — validated, consistent, and well-maintained"
+              ]
+            },
+            "scientific": {
+              "text": "How validated and reproducible is your research data?",
+              "options": [
+                "No validation standards — results are hard to reproduce",
+                "Minimal validation, reproducibility is inconsistent",
+                "Basic validation protocols in place",
+                "Formal validation with documented methodology",
+                "Rigorous validation with full reproducibility and peer review standards"
+              ]
+            },
+            "operational": {
+              "text": "How reliable and clean is your operational data for real-time decision making?",
+              "options": [
+                "Data is too noisy or incomplete to act on",
+                "Useful in aggregate but unreliable for real-time use",
+                "Reliable enough for batch analysis but not live inference",
+                "Clean and reliable for most real-time use cases",
+                "High-fidelity, anomaly-filtered, and validated for live AI inference"
+              ]
+            },
+            "embedded": {
+              "text": "How suitable is your sensor and hardware data for training and running AI models?",
+              "options": [
+                "Raw, unlabeled, and unsuitable for model training",
+                "Partially labeled with significant noise and gaps",
+                "Labeled for some scenarios but inconsistent across conditions",
+                "Well-labeled across most operating conditions",
+                "Comprehensive labeled datasets covering edge cases and failure modes"
+              ]
+            }
+          },
+          "userInput": ""
+        },
+        {
+          "id": "dr3",
+          "text": "Do you have data governance and management policies in place?",
+          "inputFormat": "multipleChoice",
+          "tracks": {
+            "workflow": {
+              "text": "Do you have data governance policies that define how business data is collected, stored, and accessed?",
+              "options": [
+                "No data governance policies exist",
+                "Informal rules but nothing documented or enforced",
+                "Basic policies in place for key systems",
+                "Comprehensive policies that are actively enforced",
+                "Advanced governance with auditing, lineage tracking, and continuous improvement"
+              ]
+            },
+            "scientific": {
+              "text": "Do you have data management standards that ensure research integrity and IP protection?",
+              "options": [
+                "No formal data management standards",
+                "Informal practices dependent on individual researchers",
+                "Basic standards for data storage and sharing",
+                "Formal standards with IP protection and access controls",
+                "Institution-grade governance with regulatory compliance and audit trails"
+              ]
+            },
+            "operational": {
+              "text": "Do you have policies governing how operational data is collected, retained, and used for automated decisions?",
+              "options": [
+                "No formal policies — data use is ad hoc",
+                "Minimal policies, inconsistently applied",
+                "Basic retention and access policies in place",
+                "Formal policies with defined data retention and usage rules",
+                "Comprehensive governance including automated decision audit trails"
+              ]
+            },
+            "embedded": {
+              "text": "Do you have data governance policies that address AI model inputs, outputs, and failure logging in physical systems?",
+              "options": [
+                "No governance for AI system data",
+                "Informal logging with no structured policies",
+                "Basic input/output logging for key systems",
+                "Formal policies with failure logging and model versioning",
+                "Full lifecycle governance including regulatory compliance and safety audit trails"
+              ]
+            }
+          },
+          "userInput": ""
+        }
+      ]
+    },
+    {
+      "id": "infrastructure-integration",
+      "name": "Infrastructure and Integration",
+      "weight": 0.15,
+      "description": "Can your infrastructure handle widespread AI integration?",
+      "questions": [
+        {
+          "id": "ii1",
+          "text": "How scalable is your current infrastructure for AI workloads?",
+          "inputFormat": "multipleChoice",
+          "tracks": {
+            "workflow": {
+              "text": "How scalable is your current IT infrastructure for adding AI-powered software tools?",
+              "options": [
+                "Not scalable — significant technical limitations",
+                "Limited scalability — would require major investment",
+                "Moderate scalability with some constraints",
+                "Highly scalable with room for expansion",
+                "Enterprise-grade scalability with cloud-ready architecture"
+              ]
+            },
+            "scientific": {
+              "text": "Do you have access to the compute infrastructure needed for model training and large-scale data processing?",
+              "options": [
+                "No access to meaningful compute resources",
+                "Basic cloud access only — no GPU or HPC capability",
+                "Shared HPC access or moderate cloud GPU availability",
+                "Dedicated GPU infrastructure or scalable cloud cluster",
+                "Purpose-built HPC environment with elastic scaling for large model training"
+              ]
+            },
+            "operational": {
+              "text": "Can your current infrastructure handle real-time data ingestion and low-latency AI inference at operational scale?",
+              "options": [
+                "No — infrastructure was not designed for real-time workloads",
+                "Partial capability with significant latency constraints",
+                "Adequate for moderate throughput but not peak load",
+                "Mostly capable with identified bottlenecks being addressed",
+                "Purpose-built for real-time AI inference with redundancy and failover"
+              ]
+            },
+            "embedded": {
+              "text": "Do your physical systems have the edge compute capacity and connectivity to run AI inference onboard?",
+              "options": [
+                "No — systems have no onboard processing for AI",
+                "Limited — a few devices could support lightweight models",
+                "Partial — some systems are edge-capable with constraints",
+                "Most systems can support edge inference with acceptable latency",
+                "Full edge AI capability with redundancy, OTA updates, and failsafe fallback"
+              ]
+            }
+          },
+          "userInput": ""
+        },
+        {
+          "id": "ii2",
+          "text": "How well can your systems integrate with AI tools and platforms?",
+          "inputFormat": "multipleChoice",
+          "tracks": {
+            "workflow": {
+              "text": "What level of API and integration capability do your current business systems have?",
+              "options": [
+                "No API integration capability",
+                "Basic API access on a few tools",
+                "Standard APIs across most core systems",
+                "Advanced integration with webhooks and event-driven architecture",
+                "Fully integrated ecosystem with real-time data flow across all tools"
+              ]
+            },
+            "scientific": {
+              "text": "How well do your research tools and data systems integrate with AI and ML platforms?",
+              "options": [
+                "No integration — tools are entirely siloed",
+                "Manual data export/import between tools",
+                "Some programmatic integration via scripts",
+                "API-connected tools with reproducible pipelines",
+                "Fully automated ML pipelines from raw data to model deployment"
+              ]
+            },
+            "operational": {
+              "text": "How well do your operational systems integrate with data platforms and AI decision engines?",
+              "options": [
+                "No integration — operational data is inaccessible to AI tools",
+                "Manual data extraction only",
+                "Batch integration running on a schedule",
+                "Near real-time integration for most critical systems",
+                "Full bidirectional integration with AI feedback loops into operations"
+              ]
+            },
+            "embedded": {
+              "text": "How well do your physical systems communicate with AI platforms for model updates, monitoring, and feedback?",
+              "options": [
+                "No connectivity — systems are fully air-gapped without a plan",
+                "Manual updates only — no remote management",
+                "Scheduled connectivity for batch updates",
+                "OTA update capability with basic telemetry",
+                "Continuous telemetry, remote model updates, and anomaly alerting with rollback"
+              ]
+            }
+          },
+          "userInput": ""
+        },
+        {
+          "id": "ii3",
+          "text": "How robust is your cybersecurity posture for AI workloads?",
+          "inputFormat": "multipleChoice",
+          "tracks": {
+            "workflow": {
+              "text": "How robust is your cybersecurity and data protection infrastructure for AI-powered software tools?",
+              "options": [
+                "Minimal security measures — no formal program",
+                "Basic security in place but inconsistently applied",
+                "Adequate protocols with known gaps being addressed",
+                "Strong security framework with regular assessments",
+                "Enterprise-level security with compliance certification and AI-specific controls"
+              ]
+            },
+            "scientific": {
+              "text": "How well protected is your research environment against data theft, model exfiltration, and IP exposure?",
+              "options": [
+                "No formal protection for research data or models",
+                "Basic access controls on storage systems",
+                "Formal access management with some monitoring",
+                "Strong IP protection with data classification and audit logs",
+                "Research-grade security with air-gapped environments for sensitive work"
+              ]
+            },
+            "operational": {
+              "text": "How protected are your operational systems against AI-driven errors, adversarial inputs, or cyberattack?",
+              "options": [
+                "No controls specific to AI or operational system threats",
+                "Basic network segmentation only",
+                "Anomaly detection on critical operational systems",
+                "Formal threat modeling with AI-specific controls",
+                "OT/IT security convergence with AI threat monitoring and incident response"
+              ]
+            },
+            "embedded": {
+              "text": "How do you protect AI models and physical systems from tampering, adversarial inputs, or unauthorized updates?",
+              "options": [
+                "No security controls on deployed AI or physical systems",
+                "Basic physical security only",
+                "Signed firmware and access-controlled update channels",
+                "Formal security testing including adversarial robustness evaluation",
+                "Defense-in-depth with hardware security modules, secure boot, and red team testing"
+              ]
+            }
+          },
+          "userInput": ""
+        }
+      ]
+    },
+    {
+      "id": "human-capital",
+      "name": "Human Capital and AI Literacy",
+      "weight": 0.15,
+      "description": "How proficient and AI-literate is your team?",
+      "questions": [
+        {
+          "id": "hc1",
+          "text": "What is your team's current understanding of AI capabilities and limitations?",
+          "inputFormat": "multipleChoice",
+          "tracks": {
+            "workflow": {
+              "text": "What is your team's current understanding of AI tools, their capabilities, and where they fail?",
+              "options": [
+                "Minimal — most staff have never used an AI tool",
+                "Basic awareness — familiar with consumer AI but not business applications",
+                "Good understanding of AI tools relevant to our work",
+                "Strong understanding including limitations and failure modes",
+                "Expert-level — team can evaluate, prompt, and critically assess AI outputs"
+              ]
+            },
+            "scientific": {
+              "text": "Does your team have the ML and data science expertise to build, validate, and interpret AI models?",
+              "options": [
+                "No ML or data science expertise on the team",
+                "One person with basic exposure to ML concepts",
+                "Some capability — can use existing tools and frameworks",
+                "Strong capability — can train, validate, and tune models",
+                "Dedicated AI/ML research capability with domain-specific expertise"
+              ]
+            },
+            "operational": {
+              "text": "Does your team include people who understand both your operational domain and AI/ML systems?",
+              "options": [
+                "No — operational and technical staff are entirely separate",
+                "Minimal overlap — one or two people with adjacent knowledge",
+                "Some cross-functional capability being developed",
+                "A small team that bridges operational and AI expertise",
+                "Dedicated operational AI team with domain and ML depth"
+              ]
+            },
+            "embedded": {
+              "text": "Does your team have experience in embedded systems, edge AI, or hardware-software integration for AI?",
+              "options": [
+                "No embedded systems or edge AI experience",
+                "Traditional embedded systems experience but no AI integration",
+                "Some experience deploying ML models on constrained hardware",
+                "Solid embedded AI capability — can design and deploy edge inference systems",
+                "Deep expertise in edge AI including custom silicon, safety certification, and real-time systems"
+              ]
+            }
+          },
+          "userInput": ""
+        },
+        {
+          "id": "hc2",
+          "text": "Do you have staff with the technical expertise needed for AI in your environment?",
+          "inputFormat": "multipleChoice",
+          "tracks": {
+            "workflow": {
+              "text": "Do you have staff who can manage, configure, and evaluate AI tools in a business context?",
+              "options": [
+                "No technical expertise relevant to AI tools",
+                "Very limited — one person exploring on their own",
+                "Some capability — can implement tools with vendor support",
+                "Good technical team that can configure and manage AI tools independently",
+                "Dedicated AI operations or data team with full implementation capability"
+              ]
+            },
+            "scientific": {
+              "text": "Do you have the domain-specific expertise to train AI models on your research data without introducing bias or error?",
+              "options": [
+                "No — we lack both domain and ML expertise",
+                "Domain expertise exists but no ML capability to apply it",
+                "ML capability exists but domain experts aren't involved in model design",
+                "Domain experts and ML practitioners collaborate on model development",
+                "Fully integrated team where domain expertise directly shapes model architecture and validation"
+              ]
+            },
+            "operational": {
+              "text": "Do you have engineers who can build and maintain AI systems that interface with your operational environment?",
+              "options": [
+                "No engineering capability for AI integration",
+                "Software engineers with no operational systems experience",
+                "Some engineers learning operational AI integration",
+                "Engineers who can build and deploy operational AI with guidance",
+                "Full team capable of designing, deploying, and maintaining operational AI systems"
+              ]
+            },
+            "embedded": {
+              "text": "Do you have engineers who can design AI systems that meet the safety, latency, and reliability requirements of your physical environment?",
+              "options": [
+                "No — we lack the engineering depth for embedded AI",
+                "Traditional hardware engineers with no AI background",
+                "Software AI engineers without embedded constraints experience",
+                "Engineers who can optimize models for embedded constraints",
+                "Systems engineers who design for safety certification, real-time performance, and hardware-AI co-design"
+              ]
+            }
+          },
+          "userInput": ""
+        },
+        {
+          "id": "hc3",
+          "text": "How receptive is your workforce to AI-driven changes?",
+          "inputFormat": "multipleChoice",
+          "tracks": {
+            "workflow": {
+              "text": "How receptive is your workforce to AI-driven changes in their daily tools and workflows?",
+              "options": [
+                "Highly resistant — strong cultural pushback",
+                "Mostly resistant — concern about job displacement",
+                "Neutral or mixed — some enthusiasm, some skepticism",
+                "Generally accepting with good change management support",
+                "Enthusiastically supportive — team sees AI as a capability multiplier"
+              ]
+            },
+            "scientific": {
+              "text": "How open is your research team to incorporating AI and ML into their scientific methodology?",
+              "options": [
+                "Resistant — concern about AI undermining scientific rigor",
+                "Skeptical — willing to observe but not adopt",
+                "Curious but cautious — open to validated use cases",
+                "Generally supportive — actively exploring AI-assisted research",
+                "Fully embracing — AI is already part of the research methodology"
+              ]
+            },
+            "operational": {
+              "text": "How comfortable are your operations teams with AI systems making or informing operational decisions?",
+              "options": [
+                "Not comfortable — strong preference for human-only decision making",
+                "Cautious — willing to use AI as an advisory tool only",
+                "Neutral — open to AI if reliability is demonstrated",
+                "Comfortable with AI-assisted decisions on well-understood processes",
+                "Confident — operations team trusts and actively relies on AI-driven insights"
+              ]
+            },
+            "embedded": {
+              "text": "How comfortable are your engineering and operations teams with AI running autonomously in physical systems?",
+              "options": [
+                "Not comfortable — no trust in autonomous AI decision making",
+                "Cautious — only acceptable with constant human oversight",
+                "Conditional — acceptable in low-risk, well-tested scenarios",
+                "Comfortable in defined operational envelopes with monitoring",
+                "Confident — team has experience validating and trusting autonomous AI in physical systems"
+              ]
+            }
+          },
+          "userInput": ""
+        }
+      ]
+    },
+    {
+      "id": "leadership-readiness",
+      "name": "Leadership Readiness",
+      "weight": 0.15,
+      "description": "How AI-literate is your leadership and what is their level of commitment?",
+      "questions": [
+        {
+          "id": "lr1",
+          "text": "How well does your leadership understand AI's strategic importance in your context?",
+          "inputFormat": "multipleChoice",
+          "tracks": {
+            "workflow": {
+              "text": "How well does your leadership understand how AI can create competitive advantage in your industry?",
+              "options": [
+                "No strategic understanding — AI is seen as a cost center",
+                "Minimal awareness — leadership has heard the buzz but lacks depth",
+                "Moderate understanding — recognizes opportunity but lacks a plan",
+                "Strong strategic vision — AI is part of the business roadmap",
+                "Clear AI strategy with defined use cases, owners, and success metrics"
+              ]
+            },
+            "scientific": {
+              "text": "How well does your leadership understand what AI-assisted research can and cannot do for your scientific mission?",
+              "options": [
+                "No understanding — leadership is not engaged with AI in research",
+                "Aware of AI in science broadly but no domain-specific understanding",
+                "Understands the opportunity but unclear on implementation requirements",
+                "Has a defined vision for AI in research with resource commitment",
+                "AI research strategy is formally documented with validation protocols and ethics review"
+              ]
+            },
+            "operational": {
+              "text": "How well does your leadership understand the operational risk and opportunity of deploying AI in your systems?",
+              "options": [
+                "No understanding of operational AI risk or opportunity",
+                "Aware of AI operationally but no risk framework in place",
+                "Understands the opportunity but has not addressed failure scenarios",
+                "Has defined acceptable risk thresholds and a deployment strategy",
+                "Formal operational AI governance with risk tolerance, SLAs, and escalation paths"
+              ]
+            },
+            "embedded": {
+              "text": "Does your leadership understand the safety, regulatory, and liability implications of deploying AI in physical systems?",
+              "options": [
+                "No awareness of safety or regulatory requirements for embedded AI",
+                "Aware of compliance requirements but no formal response",
+                "Has identified relevant standards but not yet addressed them",
+                "Safety and regulatory requirements are documented and being addressed",
+                "Full safety case developed with legal, regulatory, and insurance considerations resolved"
+              ]
+            }
+          },
+          "userInput": ""
+        },
+        {
+          "id": "lr2",
+          "text": "What is your organization's financial commitment to AI initiatives?",
+          "inputFormat": "multipleChoice",
+          "tracks": {
+            "workflow": {
+              "text": "What is your organization's financial commitment to AI tools and implementation?",
+              "options": [
+                "No budget allocated for AI",
+                "Minimal budget — exploring free or low-cost tools only",
+                "Moderate budget for tools and some implementation support",
+                "Significant budget with dedicated AI spend line",
+                "Substantial ongoing investment with multi-year AI roadmap funding"
+              ]
+            },
+            "scientific": {
+              "text": "Has your organization committed funding for compute infrastructure, data preparation, and ML talent for AI-assisted research?",
+              "options": [
+                "No funding for AI in research",
+                "Exploratory only — using free resources or shared infrastructure",
+                "Project-level funding for specific AI research initiatives",
+                "Program-level funding with dedicated compute and personnel",
+                "Strategic investment — AI is a funded research priority with infrastructure roadmap"
+              ]
+            },
+            "operational": {
+              "text": "Has your organization committed funding for the infrastructure, integration, and monitoring required for operational AI?",
+              "options": [
+                "No funding for operational AI",
+                "Pilot-only funding — not committed to production deployment",
+                "Moderate funding for specific operational AI projects",
+                "Significant investment in operational AI infrastructure",
+                "Full program investment with operational AI embedded in capital planning"
+              ]
+            },
+            "embedded": {
+              "text": "Has your organization committed funding for the hardware, certification, and engineering required to deploy AI in physical systems?",
+              "options": [
+                "No funding for embedded AI",
+                "R&D exploration only — no production commitment",
+                "Prototype-level funding for specific embedded AI use cases",
+                "Product-level funding with safety and certification budget included",
+                "Full program investment including hardware development, certification, and lifecycle maintenance"
+              ]
+            }
+          },
+          "userInput": ""
+        },
+        {
+          "id": "lr3",
+          "text": "How committed is leadership to supporting the organizational change required for AI adoption?",
+          "inputFormat": "multipleChoice",
+          "tracks": {
+            "workflow": {
+              "text": "How committed is leadership to supporting process change, retraining, and workflow redesign for AI adoption?",
+              "options": [
+                "No commitment — expecting AI to work without changing anything",
+                "Minimal support — willing to fund tools but not change management",
+                "Moderate support — recognizes change is needed, starting to address it",
+                "Strong commitment with change management resources allocated",
+                "Fully committed with active executive sponsorship and transformation program"
+              ]
+            },
+            "scientific": {
+              "text": "How committed is research leadership to integrating AI into scientific workflows and retraining researchers?",
+              "options": [
+                "No commitment — AI adoption left to individual researchers",
+                "Minimal — leadership endorses it but provides no resources",
+                "Moderate — supporting pilot programs and voluntary adoption",
+                "Strong — AI integration is a stated research priority with training programs",
+                "Fully committed — AI methodology is being institutionalized with updated research standards"
+              ]
+            },
+            "operational": {
+              "text": "How committed is operations leadership to redesigning workflows and retraining staff around AI-driven decision making?",
+              "options": [
+                "No commitment to operational change",
+                "Willing to add AI on top of existing workflows only",
+                "Open to workflow redesign in specific areas",
+                "Committed to systematic workflow redesign with staff involvement",
+                "Fully committed — operational transformation is an executive priority with change program"
+              ]
+            },
+            "embedded": {
+              "text": "How committed is leadership to the engineering investment, safety validation, and long-term support required for embedded AI in physical systems?",
+              "options": [
+                "Not committed — treating embedded AI as a short-term experiment",
+                "Interested but not resourced for the full engineering requirement",
+                "Committed to prototype and pilot phases only",
+                "Committed to production deployment with safety validation budgeted",
+                "Fully committed including post-deployment monitoring, model maintenance, and regulatory engagement"
+              ]
+            }
+          },
+          "userInput": ""
+        }
+      ]
+    },
+    {
+      "id": "security-assessment",
+      "name": "Security Assessment",
+      "weight": 0.15,
+      "description": "What is your security posture for AI implementation?",
+      "questions": [
+        {
+          "id": "sa1",
+          "text": "How well does your organization handle data privacy and compliance for AI?",
+          "inputFormat": "multipleChoice",
+          "tracks": {
+            "workflow": {
+              "text": "How well does your organization handle data privacy and regulatory compliance when using AI tools?",
+              "options": [
+                "No privacy framework — data is used in AI tools without review",
+                "Basic compliance awareness but no formal controls",
+                "Adequate protocols — reviewed key tools for compliance",
+                "Strong privacy and compliance with documented AI data policies",
+                "Advanced compliance framework including AI-specific data processing agreements"
+              ]
+            },
+            "scientific": {
+              "text": "How well does your organization protect research participant data, proprietary findings, and IP when using AI platforms?",
+              "options": [
+                "No formal protection — research data flows freely into AI tools",
+                "Basic awareness but no formal controls for research data",
+                "IRB and IP policies exist but don't address AI specifically",
+                "Formal policies governing research data use in AI with legal review",
+                "Comprehensive framework covering IRB compliance, IP protection, and AI data processing"
+              ]
+            },
+            "operational": {
+              "text": "How well does your organization manage regulatory compliance and data sovereignty for AI in operational systems?",
+              "options": [
+                "No compliance framework for operational AI",
+                "Aware of relevant regulations but not yet compliant",
+                "Compliance addressed for primary regulatory requirements",
+                "Strong compliance posture with documented controls for operational AI",
+                "Proactive compliance including regulatory engagement and future-proofing for emerging AI regulations"
+              ]
+            },
+            "embedded": {
+              "text": "How well does your organization address the regulatory, certification, and liability requirements for AI in physical systems?",
+              "options": [
+                "No regulatory awareness for embedded AI",
+                "Aware of requirements but no formal compliance program",
+                "Partial compliance — addressing some but not all requirements",
+                "Formal compliance program covering primary certification requirements",
+                "Full regulatory compliance with safety case documentation, third-party audit, and insurance coverage"
+              ]
+            }
+          },
+          "userInput": ""
+        },
+        {
+          "id": "sa2",
+          "text": "What is your incident response and recovery capability for AI system failures?",
+          "inputFormat": "multipleChoice",
+          "tracks": {
+            "workflow": {
+              "text": "What is your incident response capability if an AI tool produces harmful outputs or fails in a business-critical workflow?",
+              "options": [
+                "No formal processes — would improvise",
+                "Basic processes but not tested for AI-specific scenarios",
+                "Adequate response procedures with some AI failure scenarios covered",
+                "Well-defined processes with AI failure runbooks",
+                "Robust incident response with regular AI-specific tabletop exercises"
+              ]
+            },
+            "scientific": {
+              "text": "What is your capability to detect, investigate, and recover from AI model failures or research data corruption?",
+              "options": [
+                "No formal processes for model failure or data corruption",
+                "Basic backup and recovery for data only",
+                "Versioned data and model checkpoints with basic recovery process",
+                "Formal incident process covering data corruption, model failure, and result retraction",
+                "Comprehensive scientific integrity framework with automated anomaly detection and recovery protocols"
+              ]
+            },
+            "operational": {
+              "text": "What is your incident response capability if an AI system causes an operational failure or makes a consequential wrong decision?",
+              "options": [
+                "No formal processes for AI-driven operational failures",
+                "General IT incident response only — not tailored to AI",
+                "Basic runbooks for known AI failure modes",
+                "Well-defined AI incident response with human override protocols",
+                "Robust operational resilience framework with AI-specific failure modes, SLAs, and automated fallback"
+              ]
+            },
+            "embedded": {
+              "text": "What is your capability to detect, respond to, and recover from AI failures in deployed physical systems?",
+              "options": [
+                "No formal processes — physical system failures handled reactively",
+                "Manual inspection and recovery only",
+                "Remote diagnostics with manual recovery procedures",
+                "Automated fault detection with defined safe-state fallback behavior",
+                "Full safety system with automated fault isolation, fail-safe modes, and remote recovery capability"
+              ]
+            }
+          },
+          "userInput": ""
+        },
+        {
+          "id": "sa3",
+          "text": "How do you manage AI model risks and ethical considerations?",
+          "inputFormat": "multipleChoice",
+          "tracks": {
+            "workflow": {
+              "text": "How does your organization manage the risk of AI bias, hallucination, and unintended outputs in business workflows?",
+              "options": [
+                "No formal risk management for AI outputs",
+                "Minimal — we rely on vendor claims about model safety",
+                "Basic output review process for high-stakes AI decisions",
+                "Formal AI risk management with bias testing and human-in-the-loop for critical decisions",
+                "Comprehensive AI ethics framework with ongoing monitoring, bias audits, and stakeholder accountability"
+              ]
+            },
+            "scientific": {
+              "text": "How does your organization manage the risk of AI-introduced bias, overfitting, or error in scientific findings?",
+              "options": [
+                "No formal process for managing AI model risk in research",
+                "Rely on standard statistical review without AI-specific checks",
+                "Basic model validation against held-out test sets",
+                "Formal validation protocol with bias testing and independent review",
+                "Rigorous AI research governance including adversarial testing, reproducibility requirements, and ethics board review"
+              ]
+            },
+            "operational": {
+              "text": "How does your organization manage the risk of AI making consequential wrong decisions in operational contexts?",
+              "options": [
+                "No formal AI risk management for operational decisions",
+                "Rely on model accuracy metrics without operational risk framing",
+                "Basic thresholds and human review for high-confidence decisions only",
+                "Formal operational risk framework with defined confidence thresholds and escalation paths",
+                "Comprehensive AI risk governance including decision audit trails, bias monitoring, and continuous model performance review"
+              ]
+            },
+            "embedded": {
+              "text": "How does your organization manage the safety risk of AI making wrong decisions in physical systems where consequences are real and immediate?",
+              "options": [
+                "No formal safety risk management for embedded AI",
+                "Rely on software testing only — no hardware-level safety analysis",
+                "Basic safety analysis completed for primary failure modes",
+                "Formal safety case developed using established methodology such as FMEA or HAZOP",
+                "Full functional safety framework with independent safety assessment, redundancy design, and regulatory sign-off"
+              ]
+            }
+          },
+          "userInput": ""
+        }
+      ]
+    }
+  ]
 }

@@ -1,12 +1,43 @@
 /** Named alias for the three readiness tiers used throughout scoring and display. */
 export type ReadinessLevel = 'Low' | 'Medium' | 'High'
 
+/** The four environment tracks resolved by the classifier. */
+export type TrackKey = 'workflow' | 'scientific' | 'operational' | 'embedded'
+
+/** Track-specific text and options for a section question. */
+export interface TrackVariant {
+    text: string
+    options: string[]
+}
+
 export interface Question {
     id: string;
+    /** Fallback label shown before the classifier resolves a track. */
     text: string;
     inputFormat: 'multipleChoice' | 'text';
+    /** Top-level options for non-tracked questions (unused in tracked questions). */
     options?: string[];
+    /** Track-specific variants; present on all section questions. */
+    tracks?: Record<TrackKey, TrackVariant>;
     userInput: string;
+}
+
+/** A classifier question that routes the assessment to a track. Not scored. */
+export interface ClassifierQuestion {
+    id: string;
+    text: string;
+    inputFormat: 'multipleChoice';
+    options: string[];
+    userInput: string;
+    /** Maps option index (as string) to the track it selects. */
+    tracksTo: Record<string, TrackKey>;
+}
+
+export interface Classifier {
+    id: string;
+    name: string;
+    description: string;
+    questions: ClassifierQuestion[];
 }
 
 export interface Section {
@@ -18,6 +49,7 @@ export interface Section {
 }
 
 export interface Questionnaire {
+    classifier: Classifier;
     sections: Section[];
 }
 

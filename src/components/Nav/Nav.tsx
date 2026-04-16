@@ -64,9 +64,6 @@ export default function Nav({ hasAssessment = false, onCtaClick }: NavProps = {}
             <a href="#about">About</a>
           </li>
         </ul>
-        <button className={styles.ctaButton} onClick={onCtaClick}>
-          {hasAssessment ? 'Retake assessment' : 'Start assessment'}
-        </button>
       </div>
     </nav>
   );

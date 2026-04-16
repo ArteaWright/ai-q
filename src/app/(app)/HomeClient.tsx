@@ -102,7 +102,7 @@ export default function HomeClient({ assessment }: Props) {
                         scrollable
                         cards={SCROLL_CARDS}
                         className={styles.middleCard}
-                        border="1px solid rgba(195, 106, 58, 0.25)"
+                        border="2px solid var(--color-accent)"
                     />
 
                     {/* Right Card — Assessment */}
