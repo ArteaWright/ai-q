@@ -43,13 +43,18 @@ export default function Card({
     const containerRef = useRef<HTMLDivElement>(null)
     const cardRefs = useRef<(HTMLElement | null)[]>([])
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [isShuffling, setIsShuffling] = useState(false)
 
     const handleScrollButton = useCallback(() => {
-        if (!cards) return
+        if (!cards || isShuffling) return
         const nextIndex = (currentIndex + 1) % cards.length
-        setCurrentIndex(nextIndex)
-        cardRefs.current[nextIndex]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, [currentIndex, cards])
+        setIsShuffling(true)
+        setTimeout(() => {
+            setCurrentIndex(nextIndex)
+            cardRefs.current[nextIndex]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 180)
+        setTimeout(() => setIsShuffling(false), 420)
+    }, [currentIndex, cards, isShuffling])
 
     useEffect(() => {
         if (!scrollable) return
@@ -85,7 +90,7 @@ export default function Card({
     if (scrollable && cards) {
         const isLast = currentIndex === cards.length - 1
         return (
-            <div className={`${styles.card} ${styles.scrollCard} ${className}`} style={rootStyle}>
+            <div className={`${styles.card} ${styles.scrollCard} ${isShuffling ? styles.shuffling : ''} ${className}`} style={rootStyle}>
                 <div ref={containerRef} className={styles.scrollContainer}>
                     <div className={styles.cardsWrapper}>
                         {cards.map((card, i) => (
