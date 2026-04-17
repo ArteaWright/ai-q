@@ -10,6 +10,7 @@ import { STORAGE_KEYS } from '@/lib/storage-keys'
 import Button from '@/components/Button'
 import QuestionCard from '@/components/QuestionCard'
 import QuestionnaireProgress from '@/components/QuestionnaireProgress'
+import Confetti from '@/components/Confetti'
 import styles from './questionnaire-form.module.css'
 
 const questionnaire = questionnaireData as Questionnaire
@@ -102,6 +103,8 @@ export default function QuestionnaireForm({
     })
     const [error, setError] = useState('')
     const [initialized, setInitialized] = useState(false)
+    const [confettiActive, setConfettiActive] = useState(false)
+    const [confettiFading, setConfettiFading] = useState(false)
 
     // ── Restore saved progress ────────────────────────────────────────
     useEffect(() => {
@@ -257,7 +260,9 @@ export default function QuestionnaireForm({
         const scores = calculateOverallScore(questionnaire.sections, userResponses)
         sessionStorage.setItem(STORAGE_KEYS.PENDING_ASSESSMENT, JSON.stringify({ scores, responses: userResponses }))
         localStorage.removeItem(STORAGE_KEYS.QUESTIONNAIRE_PROGRESS)
-        router.push('/results')
+        setConfettiActive(true)
+        setConfettiFading(true)
+        setTimeout(() => router.push('/results'), 800)
     }
 
     // ── Classifier phase UI ───────────────────────────────────────────
@@ -319,6 +324,8 @@ export default function QuestionnaireForm({
 
     // ── Sections phase UI ─────────────────────────────────────────────
     return (
+        <>
+        <Confetti active={confettiActive} fading={confettiFading} />
         <div className={styles.container}>
             <div className={styles.header}>
                 <Link href="/" className={styles.backLink}>← Back to home</Link>
@@ -365,5 +372,6 @@ export default function QuestionnaireForm({
                 </Button>
             </div>
         </div>
+        </>
     )
 }
