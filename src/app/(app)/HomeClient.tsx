@@ -66,7 +66,7 @@ export default function HomeClient({ assessment }: Props) {
                 <div className={styles.container}>
 
                     {/* Left Card */}
-                    <Card className={styles.leftCard}>
+                    <Card className={styles.leftCard} background="var(--color-bg)" border='none'>
                         <div className={styles.leftContent}>
                             <div className={styles.leftTop}>
                                 <h1 className={styles.title}>AI-Q</h1>
@@ -74,7 +74,7 @@ export default function HomeClient({ assessment }: Props) {
                                     Evaluate your AI readiness with AI-Q, the AI readiness assessment tool.
                                 </p>
                                 <div className={styles.sectionCard}>
-                                    <h2 className={styles.sectionTitle}>Data Readiness</h2>
+                                    <h2 className={styles.sectionTitle}>AI Readiness</h2>
                                     <p className={styles.sectionText}>
                                         Discover how well your business manages data, quality, governance, and reporting.
                                     </p>

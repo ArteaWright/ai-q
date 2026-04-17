@@ -29,7 +29,6 @@
 .leftContent {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 100%;
     padding: 2rem;
 }
@@ -90,8 +89,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 13px 28px;
-    border-radius: 999px;
+    padding: 15px 30px;
+    border-radius: 12px;
     background: var(--color-accent);
     color: var(--color-dark);
     text-decoration: none;
