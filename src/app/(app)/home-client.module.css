@@ -19,10 +19,45 @@
 
 /* ── Column sizing ── */
 .leftCard,
-.middleCard,
+.middleCardWrapper,
 .rightCard {
     min-height: 0;
     height: 100%;
+}
+
+/* ── Stacked card deck ── */
+.middleCardWrapper {
+    position: relative;
+    isolation: isolate;
+}
+
+.middleCardWrapper::before,
+.middleCardWrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    border: 2px solid var(--color-accent);
+    background: rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+}
+
+.middleCardWrapper::before {
+    transform: rotate(-2deg) translateY(6px) translateX(-2px);
+    opacity: 0.45;
+    z-index: -1;
+}
+
+.middleCardWrapper::after {
+    transform: rotate(-4deg) translateY(12px) translateX(-4px);
+    opacity: 0.2;
+    z-index: -2;
+}
+
+.middleCardInner {
+    height: 100%;
+    position: relative;
+    z-index: 0;
 }
 
 /* ── Left card content ── */
@@ -275,7 +310,7 @@
         height: auto;
     }
 
-    .middleCard {
+    .middleCardWrapper {
         height: 60vh;
         flex-shrink: 0;
     }

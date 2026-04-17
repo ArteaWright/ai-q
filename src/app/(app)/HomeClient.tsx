@@ -98,12 +98,14 @@ export default function HomeClient({ assessment }: Props) {
                     </Card>
 
                     {/* Middle Card — Scroll */}
-                    <Card
-                        scrollable
-                        cards={SCROLL_CARDS}
-                        className={styles.middleCard}
-                        border="2px solid var(--color-accent)"
-                    />
+                    <div className={styles.middleCardWrapper}>
+                        <Card
+                            scrollable
+                            cards={SCROLL_CARDS}
+                            className={styles.middleCardInner}
+                            border="2px solid var(--color-accent)"
+                        />
+                    </div>
 
                     {/* Right Card — Assessment */}
                     <Card className={`${styles.rightCard} ${assessment ? styles.mobileFirst : ''}`}>
