@@ -206,7 +206,7 @@
 .sections {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
     flex: 1;
 }
 
@@ -215,7 +215,9 @@
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
-    font-size: 0.82rem;
+    font-size: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .sectionName {
