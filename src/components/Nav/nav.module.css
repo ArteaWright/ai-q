@@ -11,6 +11,11 @@
   border-bottom: 1px solid rgba(255, 251, 242, 0.08);
 }
 
+/* Q style */
+.q {
+    color: var(--color-accent);
+}
+
 .eyebrow {
   display: flex;
   align-items: center;

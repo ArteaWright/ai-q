@@ -40,7 +40,7 @@ export default function Nav({ hasAssessment = false, onCtaClick }: NavProps = {}
           {/* Core dot */}
           <circle cx="18" cy="18" r="3" fill="#c36a3a" />
         </svg>
-        <span className={styles.wordmark}>AIQ</span>
+        <span className={styles.wordmark}>AI-<span className={styles.q}>Q</span></span>
       </Link>
 
       {/* Center: Eyebrow */}
