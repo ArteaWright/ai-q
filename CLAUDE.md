@@ -93,6 +93,7 @@
 - Define new color scheme and update global theme ✅
 - Improve typography, spacing, and visual hierarchy ✅
 - Add branding (logo/mark), gradient accents, and card depth ✅
+- Standardize design tokens (font-size, spacing, sizing, border-radius) and sweep all CSS modules ✅
 - Subtle animations and transitions throughout
 
 ## Key Files to Create/Modify
