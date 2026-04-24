@@ -2,6 +2,7 @@
     width: min(100%, var(--size-lg));
     margin: var(--space-2xl) auto;
     padding: var(--space-2xl);
+    animation: var(--animate-fade-in);
 }
 
 .header {

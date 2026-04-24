@@ -23,7 +23,13 @@
 .rightCard {
     min-height: 0;
     height: 100%;
+    animation: var(--animate-slide-up);
+    animation-fill-mode: both;
 }
+
+.leftCard         { animation-delay: 0ms; }
+.middleCardWrapper { animation-delay: 80ms; }
+.rightCard        { animation-delay: 160ms; }
 
 /* ── Stacked card deck ── */
 .middleCardWrapper {

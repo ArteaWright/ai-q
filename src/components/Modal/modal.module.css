@@ -7,6 +7,7 @@
     justify-content: center;
     z-index: 200;
     padding: var(--space-xl);
+    animation: var(--animate-fade-in);
 }
 
 .modal {
@@ -18,6 +19,7 @@
     width: min(100%, var(--size-md));
     display: grid;
     gap: var(--space-lg);
+    animation: var(--animate-slide-up);
 }
 
 .closeBtn {
