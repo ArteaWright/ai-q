@@ -1,26 +1,26 @@
 .card {
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 16px;
-    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
     background: rgba(255, 255, 255, 0.04);
 }
 
 .questionText {
-    margin: 0 0 1rem;
-    font-size: 1rem;
+    margin: 0 0 var(--space-lg);
+    font-size: var(--text-base);
     line-height: 1.6;
 }
 
 .options {
     display: grid;
-    gap: 0.75rem;
+    gap: var(--space-md);
 }
 
 .optionButton {
     width: 100%;
     text-align: left;
-    padding: 0.85rem 1rem;
-    border-radius: 12px;
+    padding: var(--space-lg) var(--space-lg);
+    border-radius: var(--radius-md);
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(255, 255, 255, 0.03);
     color: var(--foreground);

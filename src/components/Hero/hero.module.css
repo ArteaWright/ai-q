@@ -42,7 +42,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 2rem;
+  padding: var(--space-xl) var(--space-2xl);
   gap: 4rem;
   background: rgb(25, 16, 15);
 }
@@ -50,8 +50,8 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
-  max-width: 520px;
+  gap: var(--space-3xl);
+  max-width: var(--size-md);
   width: 50%;
   flex-shrink: 0;
 }
@@ -64,7 +64,7 @@
   letter-spacing: -1.5px;
   line-height: 1.05;
   color: var(--color-text-primary);
-  margin-top: 35px;
+  margin-top: var(--space-2xl);
   padding: 0;
 }
 
@@ -76,7 +76,7 @@
 .tagline {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-lg);
 }
 
 .taglineRule {
@@ -90,7 +90,7 @@
 
 .taglineText {
   font-family: var(--font-mono-premium);
-  font-size: 13px;
+  font-size: var(--text-sm);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -100,13 +100,13 @@
 /* Body copy */
 .bodyCopy {
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: var(--text-base);
   font-weight: 300;
   line-height: 1.8;
   color: var(--color-text-muted);
   margin: 0;
   padding: 0;
-  max-width: 420px;
+  max-width: var(--size-sm);
 }
 
 .warmText {
@@ -117,16 +117,16 @@
 /* CTA Row */
 .ctaRow {
   display: flex;
-  gap: 1rem;
+  gap: var(--space-lg);
   flex-wrap: wrap;
 }
 
 .primaryButton {
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: var(--text-sm);
   font-weight: 700;
-  padding: 14px 28px;
-  border-radius: 99px;
+  padding: var(--space-lg) var(--space-2xl);
+  border-radius: var(--radius-pill);
   border: none;
   background: var(--color-accent);
   color: var(--color-dark);
@@ -135,16 +135,16 @@
 }
 
 .primaryButton:hover {
-  background: #d4793f;
+  background: var(--color-accent-dark);
   transform: translateY(-1px);
 }
 
 .ghostButton {
   font-family: var(--font-mono-premium);
-  font-size: 12px;
+  font-size: var(--text-xs);
   font-weight: 500;
-  padding: 13px 24px;
-  border-radius: 99px;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-pill);
   border: 1px solid rgba(255, 251, 242, 0.12);
   background: transparent;
   color: var(--color-text-muted);
@@ -161,21 +161,21 @@
 .statsRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 2.5rem;
-  padding-top: 2rem;
+  gap: var(--space-3xl);
+  padding-top: var(--space-2xl);
   border-top: 1px solid rgba(255, 251, 242, 0.08);
-  margin-top: 1rem;
+  margin-top: var(--space-lg);
 }
 
 .stat {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-sm);
 }
 
 .statNumber {
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: var(--text-xl);
   font-weight: 800;
   color: var(--color-text-primary);
   line-height: 1;
@@ -187,7 +187,7 @@
 
 .statLabel {
   font-family: var(--font-mono-premium);
-  font-size: 10px;
+  font-size: var(--text-xs);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -203,25 +203,23 @@
   flex-shrink: 0;
 }
 
-/* Scroll hint - removed, moved to page-module.css */
-
 /* Responsive design */
 @media (max-width: 1200px) {
   .heroMain {
-    gap: 2rem;
-    padding: 0 1.5rem;
+    gap: var(--space-2xl);
+    padding: 0 var(--space-xl);
   }
 
   .content {
-    max-width: 480px;
+    max-width: var(--size-md);
   }
 }
 
 @media (max-width: 960px) {
   .heroMain {
     flex-direction: column;
-    gap: 3rem;
-    padding: 2rem 1.5rem;
+    gap: var(--space-3xl);
+    padding: var(--space-2xl) var(--space-xl);
   }
 
   .content {
@@ -236,7 +234,7 @@
   }
 
   .statsRow {
-    gap: 2rem;
+    gap: var(--space-2xl);
   }
 }
 
@@ -247,8 +245,8 @@
   }
 
   .heroMain {
-    padding: 2rem 1rem;
-    gap: 2rem;
+    padding: var(--space-2xl) var(--space-lg);
+    gap: var(--space-2xl);
   }
 
   .headline {
@@ -256,7 +254,7 @@
   }
 
   .content {
-    gap: 2rem;
+    gap: var(--space-2xl);
   }
 
   .canvasWrapper {
@@ -265,7 +263,7 @@
 
   .ctaRow {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: var(--space-md);
   }
 
   .primaryButton,
@@ -276,8 +274,8 @@
 
   .statsRow {
     flex-direction: column;
-    gap: 1.5rem;
-    padding-top: 1.5rem;
-    margin-top: 0.5rem;
+    gap: var(--space-xl);
+    padding-top: var(--space-xl);
+    margin-top: var(--space-sm);
   }
 }

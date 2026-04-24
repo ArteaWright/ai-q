@@ -4,15 +4,15 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    gap: 2rem;
+    gap: var(--space-2xl);
 }
 
 /* Outer ring — slow counter-spin */
 .ring {
     position: relative;
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
+    width: var(--size-ring);
+    height: var(--size-ring);
+    border-radius: var(--radius-circle);
     border: 2px solid rgba(255, 255, 255, 0.06);
     border-top-color: rgba(195, 106, 58, 0.35);
     animation: spinSlow 3s linear infinite;
@@ -22,7 +22,7 @@
 .innerRing {
     position: absolute;
     inset: 6px;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     border: 2px solid rgba(255, 255, 255, 0.04);
     border-top-color: var(--color-accent);
     animation: spinFast 1s linear infinite;
@@ -30,7 +30,7 @@
 
 .text {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
     color: rgba(255, 255, 255, 0.45);
     letter-spacing: 0.04em;
     animation: breathe 2s ease-in-out infinite;

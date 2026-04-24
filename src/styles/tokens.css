@@ -56,6 +56,8 @@
   --color-border-strong: color-mix(in srgb, var(--color-text-muted) 55%, transparent);
   --color-text: var(--color-text-primary);
   --color-text-subtle: var(--color-text-muted);
+  --color-accent-dark: #d4793f;
+  /* darker burnt sienna — accent hover/pressed on light surfaces */
   --color-accent-hover: var(--color-accent-secondary);
   --color-accent-soft: var(--color-accent);
 
@@ -75,6 +77,80 @@
   --font-display: var(--font-display, "Syne", system-ui, sans-serif);
   --font-body: var(--font-body, "DM Sans", system-ui, sans-serif);
   --font-mono-premium: var(--font-mono, "DM Mono", monospace);
+
+  /* ----------------------------------------------------------
+     FONT SIZE
+     8-step scale covering all text contexts in the app.
+  ---------------------------------------------------------- */
+  --text-xs: 0.75rem;
+  /* 12px — labels, captions, micro text */
+  --text-sm: 0.875rem;
+  /* 14px — nav links, secondary body, input text */
+  --text-base: 1rem;
+  /* 16px — standard body copy, buttons */
+  --text-md: 1.125rem;
+  /* 18px — emphasized body, large inputs */
+  --text-lg: 1.25rem;
+  /* 20px — section headings, nav titles */
+  --text-xl: 1.5rem;
+  /* 24px — page sub-headings */
+  --text-2xl: 2rem;
+  /* 32px — display headings */
+  --text-display: clamp(2.5rem, 6vw, 4rem);
+  /* fluid — hero / landing headlines */
+
+  /* ----------------------------------------------------------
+     SPACING
+     7-step scale for padding, margin, and gap.
+  ---------------------------------------------------------- */
+  --space-xs: 0.25rem;
+  /* 4px — badge padding, tight insets */
+  --space-sm: 0.5rem;
+  /* 8px — input padding, small gaps */
+  --space-md: 0.75rem;
+  /* 12px — option buttons, medium gaps */
+  --space-lg: 1rem;
+  /* 16px — standard padding, common gaps */
+  --space-xl: 1.5rem;
+  /* 24px — card padding, nav spacing */
+  --space-2xl: 2rem;
+  /* 32px — container / section padding */
+  --space-3xl: 2.5rem;
+  /* 40px — hero / large layout gaps */
+
+  /* ----------------------------------------------------------
+     SIZE (length / width / height)
+     Named container widths and fixed component sizes.
+  ---------------------------------------------------------- */
+  --size-sm: 400px;
+  /* login, signup, modal nav max-width */
+  --size-md: 480px;
+  /* modal max-width */
+  --size-lg: 680px;
+  /* questionnaire form max-width */
+  --size-xl: 1000px;
+  /* results view max-width */
+  --size-icon: 40px;
+  /* scroll buttons, checkpoints */
+  --size-ring: 72px;
+  /* loading spinner ring */
+
+  /* ----------------------------------------------------------
+     BORDER RADIUS
+     6-step scale from sharp to fully rounded.
+  ---------------------------------------------------------- */
+  --radius-xs: 4px;
+  /* buttons, close icons */
+  --radius-sm: 8px;
+  /* form inputs, containers */
+  --radius-md: 12px;
+  /* cards, option buttons */
+  --radius-lg: 16px;
+  /* prominent cards, modals */
+  --radius-pill: 999px;
+  /* pill badges, fully rounded buttons */
+  --radius-circle: 50%;
+  /* progress indicators, avatars */
 
   /* ----------------------------------------------------------
      ANIMATIONS

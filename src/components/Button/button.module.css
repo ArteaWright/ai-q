@@ -2,10 +2,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 1rem;
+    padding: var(--space-sm) var(--space-lg);
     border: none;
-    border-radius: 4px;
-    font-size: 1rem;
+    border-radius: var(--radius-xs);
+    font-size: var(--text-base);
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
@@ -32,8 +32,8 @@
 }
 
 .small {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--text-sm);
 }
 
 .medium {
@@ -41,8 +41,8 @@
 }
 
 .large {
-    padding: 0.75rem 1.5rem;
-    font-size: 1.125rem;
+    padding: var(--space-md) var(--space-xl);
+    font-size: var(--text-md);
 }
 
 .button:disabled {

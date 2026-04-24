@@ -6,31 +6,31 @@
     align-items: center;
     justify-content: center;
     z-index: 200;
-    padding: 1.5rem;
+    padding: var(--space-xl);
 }
 
 .modal {
     position: relative;
     background: var(--color-surface);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 2rem;
-    width: min(100%, 480px);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    width: min(100%, var(--size-md));
     display: grid;
-    gap: 1rem;
+    gap: var(--space-lg);
 }
 
 .closeBtn {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: var(--space-lg);
+    right: var(--space-lg);
     background: none;
     border: none;
     color: rgba(255, 255, 255, 0.55);
-    font-size: 1rem;
+    font-size: var(--text-base);
     cursor: pointer;
-    padding: 0.25rem 0.5rem;
-    border-radius: 6px;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
     transition: color 0.15s ease, background 0.15s ease;
 }
 

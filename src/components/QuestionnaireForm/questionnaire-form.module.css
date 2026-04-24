@@ -1,17 +1,17 @@
 .container {
-    width: min(100%, 680px);
-    margin: 2rem auto;
-    padding: 2rem;
+    width: min(100%, var(--size-lg));
+    margin: var(--space-2xl) auto;
+    padding: var(--space-2xl);
 }
 
 .header {
     display: grid;
-    gap: 0.75rem;
-    margin-bottom: 2rem;
+    gap: var(--space-md);
+    margin-bottom: var(--space-2xl);
 }
 
 .backLink {
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     color: rgba(255, 255, 255, 0.5);
     text-decoration: none;
     width: fit-content;
@@ -23,11 +23,11 @@
 }
 
 .sectionLabel {
-    font-size: 0.8rem;
+    font-size: var(--text-xs);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.55);
-    margin: 0.5rem 0 0;
+    margin: var(--space-sm) 0 0;
 }
 
 .heading {
@@ -41,32 +41,32 @@
 
 .questionCount {
     margin: 0;
-    font-size: 0.8rem;
+    font-size: var(--text-xs);
     color: rgba(255, 255, 255, 0.45);
 }
 
 .question {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-xl);
 }
 
 .error {
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-lg);
     color: var(--color-readiness-low);
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
     font-weight: 500;
 }
 
 .actions {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: var(--space-lg);
     flex-wrap: wrap;
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 1.25rem;
-        margin: 1rem auto;
+        padding: var(--space-xl);
+        margin: var(--space-lg) auto;
     }
 
     .actions {

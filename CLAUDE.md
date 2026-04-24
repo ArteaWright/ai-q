@@ -90,9 +90,9 @@
 23. `ResultsView` updated — detects `fromHistory` flag in sessionStorage and uses `cachedRecommendations` instead of calling Claude API again
 
 ### Phase 7: Design ⏳ PENDING
-- Define new color scheme and update global theme
-- Improve typography, spacing, and visual hierarchy
-- Add branding (logo/mark), gradient accents, and card depth
+- Define new color scheme and update global theme ✅
+- Improve typography, spacing, and visual hierarchy ✅
+- Add branding (logo/mark), gradient accents, and card depth ✅
 - Subtle animations and transitions throughout
 
 ## Key Files to Create/Modify
@@ -175,6 +175,6 @@ Build a prompt like:
 - Phase 4: ✅ Completed (POST /api/assessment/submit, Claude API integration with claude-opus-4-6)
 - Phase 5: ✅ Completed (assessments table created in Supabase with RLS; POST /api/assessment/submit saves overall score, readiness level, section scores, recommendations, and completed_at per user)
 - Phase 6: ✅ Completed (Mobile button fix, upsert on retake, assessment sidebar with drawer, RetakeModal, cached history view)
-- Phase 7: ⏳ Pending (Design — color scheme, typography, branding, animations)
+- Phase 7: ⏳ In Progress (Design — color scheme ✅, typography ✅, branding ✅, animations pending)
 
-Last updated: April 9, 2026
+Last updated: April 24, 2026
